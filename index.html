@@ -1,0 +1,1409 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Chelsea Farmers Supply</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Open+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    <link href="marquee.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #e9e5e2;
+            --accent-color: #e67e22;
+            --tertiary-color: #eee2c5;
+            --primary-light: #e08635;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --background-light: #D7EBBA;
+            --border-color: #e9ecef;
+            
+            --heading-font: 'Playfair Display', serif;
+            --font-heading: 'Playfair Display', serif;
+            --body-font: 'Open Sans', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+            
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        :root {
+            --marquee-width: 80vw;
+            --marquee-height: 20vh;
+            /* --marquee-elements: 12; */ /* defined with JavaScript */
+            --marquee-elements-displayed: 5;
+            --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+            --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-image {
+            max-height: 3em;
+        }
+
+        .contact-title {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-light);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('./images/storefront.png') no-repeat center center/cover;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-family: var(--heading-font);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: var(--background-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-family: var(--heading-font);
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .about-image {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        /* Products Section */
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--text-light);
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            font-family: var(--heading-font);
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 10px;
+        }
+
+        .gallery-item:has(img) {
+            background: none;
+            color: transparent;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            font-family: var(--body-font);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-info h3 {
+            font-family: var(--heading-font);
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: var(--text-light);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: var(--heading-font);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+            color: #95a5a6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .header-content {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+    <style>
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--secondary-color);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                box-shadow: var(--shadow);
+                z-index: 1000;
+            }
+            
+            nav ul.mobile-open {
+                display: flex !important;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .mobile-menu.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            
+            .mobile-menu.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .mobile-menu.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+    </style>
+</head>
+
+<body style="opacity: 1; transition: opacity 0.3s;">
+    <header style="background: linear-gradient(135deg, #ffffff 0%, #e9e5e2 100%); backdrop-filter: none; opacity: 1;">
+        <div class="header-content">
+            <div class="logo business-name">
+                <img src="./images/logo_vect.svg" class="logo-image">
+            </div>
+            <h1 display:none></h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#newsletter">Newsletter</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dependable Supplies for Every Season</h1>
+            <!-- <p>Professional deconstruction services that salvage materials for reuse. Environmentally responsible demolition with materials donated to support non-profit organizations and community projects.</p> -->
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>About <span class="business-name">Chelsea Farmers Supply</span></h2>
+                <p>Your trusted partner in sustainable demolition and material salvage</p>
+            </div>
+            <div class="about-content" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;">
+                <div class="about-text">
+                    <h3>Environmental Responsibility Through Deconstruction</h3>
+                    <p>Chelsea Farmers Supply is one of the oldest standing buildings in Chelsea, dating back to 1855. Originally a hotel, the building was transformed into a feed mill in 1925. While the mill no longer grinds grain on site, the commitment to the local agricultural community remains strong.</p>
+                    <p>Over the years, the selection has expanded to meet the needs of wild bird enthusiasts, pet owners, and homesteaders, in addition to gardeners and farmers of all types. Owners Joe and Tobie are at the store every day to assist with anything you may need&mdash;from troubleshooting a garden problem, sourcing that hard to find item, or even just sharing a story!  We strive to be an inclusive and supportive space for ALL.</p>
+                    <p>Come fall in love with a piece of Chelsea History.  We are here for you!</p>
+                </div>
+                <div class="about-image">
+                    <div class="gallery-item" style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                        <img src="./images/IMG_1470.webp">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Products</h2>
+                <p>Comprehensive deconstruction solutions for residential and commercial properties</p>
+            </div>
+
+            <div class="marquee">
+                <ul class="marquee-content">
+                    <li><i class="marquee-el buckeye"></i></li>
+                    <li><i class="marquee-el muck"></i></li>
+                    <li><i class="marquee-el migardener"></i></li>
+                    <li><i class="marquee-el promix"></i></li>
+                    <li><i class="marquee-el honeycreek"></i></li>
+                    <li><i class="marquee-el foxfarm"></i></li>
+                    <li><i class="marquee-el scratchnpeck"></i></li>
+                    <li><i class="marquee-el townline"></i></li>
+                    <li><i class="marquee-el woodenspoon"></i></li>
+                    <li><i class="marquee-el morgan"></i></li>
+                </ul>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;">
+                    <div class="service-icon">🏠</div>
+                    <h3>Residential Demolition</h3>
+                    <p>Careful hand demolition of homes and residential structures, salvaging lumber, fixtures, and architectural elements for reuse.</p>
+                </div>
+                <div class="service-card" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;">
+                    <div class="service-icon">🏢</div>
+                    <h3>Commercial Demolition</h3>
+                    <p>Strategic deconstruction of commercial buildings, warehouses, and office spaces with maximum material recovery.</p>
+                </div>
+                <div class="service-card" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;">
+                    <div class="service-icon">⚒️</div>
+                    <h3>Concrete Saw-Cutting</h3>
+                    <p>Precision concrete cutting services for controlled demolition and selective removal of concrete structures.</p>
+                </div>
+                <div class="service-card" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;">
+                    <div class="service-icon">🔥</div>
+                    <h3>Metal Cutting &amp; Torching</h3>
+                    <p>Professional metal cutting and torching services for steel structures, pipes, and industrial equipment removal.</p>
+                </div>
+                <div class="service-card" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Wall Shoring &amp; Protection</h3>
+                    <p>Structural support and area protection services to ensure safe demolition operations and protect adjacent structures.</p>
+                </div>
+                <div class="service-card" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;">
+                    <div class="service-icon">🧹</div>
+                    <h3>Site Cleanup &amp; Management</h3>
+                    <p>Complete job site cleanup, debris removal, and project management from start to finish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Project Gallery</h2>
+                <p>See our sustainable demolition and material salvage projects</p>
+            </div>
+            
+            <!-- <div class="gallery-grid">
+                <div class="gallery-item" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                    <img src="./images/IMG_1968.webp" alt="Disaster Cleanup">
+                </div>
+                <div class="gallery-item" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                    <img src="./images/IMG_4498.webp" alt="Disaster Cleanup">
+                </div>
+                <div class="gallery-item" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                    <img src="./images/IMG_1089.webp" alt="Residential Deconstruction">
+                </div>
+                <div class="gallery-item" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                    <img src="./images/IMG_0498.webp" alt="Material Salvage">
+                </div>
+                <div class="gallery-item" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                    <img src="./images/IMG_1164.webp" alt="Concrete Cutting Work">
+                </div>
+                <div class="gallery-item" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                    <img src="./images/IMG_0545.webp" alt="Residential Deconstruction">
+                </div>
+                <div class="gallery-item" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                    <img src="./images/IMG_0690.webp" alt="Site Protection Setup">
+                </div>
+                <div class="gallery-item" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;" tabindex="0">
+                    <img src="./images/IMG_4093.webp" alt="Architectural Lumber Salvage">
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <section id="newsletter" class="section">
+        <div class="container">
+            <p>Sign-up</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="contact-content" style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s, transform 0.6s;">
+                <div class="section-header contact-title">
+                    <div>
+                        <h2>Get In Touch</h2>
+                        <p>Ready to start your demolition project? Contact us for a consultation and learn about our salvage donation program</p>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <h3>Store Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Address</strong><br>
+                            122 Jackson St<br>
+                            Chelsea, MI, 48118
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            (734) 475-1777
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:chelseafarmersupply@gmail.com">chelseafarmersupply@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div>
+                            <strong>Business Hours</strong><br>
+                            Tue-Sun: 10:00 AM to 6:00 PM
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/ChelseaFarmersSupply" class="social-link" title="Facebook" target="_blank">
+                            <img src="/images/socials/facebook.svg" alt="Facebook" style="width:30px; height:30px;">
+                        </a>
+                        <a href="https://www.instagram.com/chelsea_farmers_supply/?hl=en" class="social-link" title="Instagram" target="_blank">
+                            <img src="/images/socials/instagram.svg" alt="Instagram" style="width:30px; height:30px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p>Residential Demolition</p>
+                    <p>Commercial Demolition</p>
+                    <p>Material Salvage &amp; Donation</p>
+                    <p>Concrete Saw-Cutting</p>
+                    <p>Wall Shoring &amp; Site Cleanup</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>122 Jackson St</p>
+                    <p>Chelsea, MI, 48118
+                    <p>(734) 475-1777</p>
+                    <p><a href="mailto:chelseafarmersupply@gmail.com">chelseafarmersupply@gmail.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Community Support</h3>
+                    <p>Non-Profit Material Donations</p>
+                    <p>BRAG - Help for the Homefront Partner</p>
+                    <p>Volunteer Labor Programs</p>
+                    <p>Sustainable Practices</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 <span class="business-name">LTS Software</span> All rights reserved. | Licensed &amp; Insured</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function applyURLParameters() {
+            const params = new URLSearchParams(window.location.search);
+            
+            const businessName = params.get('business');
+            const primaryColor = params.get('primary');
+            const titleFont = params.get('titleFont');
+            const bodyFont = params.get('bodyFont');
+            
+            // Get palette colors from URL parameters
+            const paletteColors = [];
+            for (let i = 0; i < 10; i++) {
+                const color = params.get(`color${i}`);
+                if (color) {
+                    paletteColors.push(color.startsWith('#') ? color : `#${color}`);
+                }
+            }
+
+            // Update business name
+            if (businessName) {
+                const nameElements = document.querySelectorAll('.business-name');
+                if (nameElements.length > 0) {
+                    nameElements.forEach(el => {
+                        if (el) el.textContent = businessName;
+                    });
+                }
+                
+                const titleElement = document.getElementById('page-title');
+                if (titleElement) {
+                    titleElement.textContent = businessName;
+                }
+            }
+
+            // Update colors using palette if available, otherwise fallback to primary
+            if (paletteColors.length > 0) {
+                // Use generated palette colors
+                if (paletteColors[0]) {
+                    document.documentElement.style.setProperty('--primary-color', paletteColors[0]);
+                }
+                if (paletteColors[1]) {
+                    document.documentElement.style.setProperty('--secondary-color', paletteColors[1]);
+                }
+                if (paletteColors[2]) {
+                    document.documentElement.style.setProperty('--accent-color', paletteColors[2]);
+                }
+                if (paletteColors[3]) {
+                    document.documentElement.style.setProperty('--tertiary-color', paletteColors[3]);
+                }
+                
+                // Create a lighter version of primary for hover states if primary exists
+                if (paletteColors[0]) {
+                    const lightPrimary = adjustBrightness(paletteColors[0], 15);
+                    if (lightPrimary) {
+                        document.documentElement.style.setProperty('--primary-light', lightPrimary);
+                    }
+                }
+                
+            } else if (primaryColor) {
+                // Fallback to single primary color
+                const fullHex = primaryColor.startsWith('#') ? primaryColor : `#${primaryColor}`;
+                if (fullHex && fullHex.length >= 7) {
+                    document.documentElement.style.setProperty('--primary-color', fullHex);
+                }
+            }
+
+            // Update fonts
+            if (titleFont && typeof titleFont === 'string' && titleFont.trim()) {
+                document.documentElement.style.setProperty('--heading-font', `'${titleFont}', serif`);
+                document.documentElement.style.setProperty('--font-heading', `'${titleFont}', serif`);
+            }
+
+            if (bodyFont && typeof bodyFont === 'string' && bodyFont.trim()) {
+                document.documentElement.style.setProperty('--body-font', `'${bodyFont}', sans-serif`);
+                document.documentElement.style.setProperty('--font-body', `'${bodyFont}', sans-serif`);
+            }
+        }
+
+            // Helper function to adjust brightness with safety checks
+        function adjustBrightness(hex, percent) {
+            if (!hex || typeof hex !== 'string') return null;
+            
+            const cleanHex = hex.replace("#", "");
+            if (cleanHex.length !== 6) return null;
+            
+            const num = parseInt(cleanHex, 16);
+            if (isNaN(num)) return null;
+            
+            const amt = Math.round(2.55 * percent);
+            const R = Math.max(0, Math.min(255, (num >> 16) + amt));
+            const G = Math.max(0, Math.min(255, (num >> 8 & 0x00FF) + amt));
+            const B = Math.max(0, Math.min(255, (num & 0x0000FF) + amt));
+            
+            return "#" + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+        }
+
+            // Apply parameters when page loads with error handling
+        try {
+            document.addEventListener('DOMContentLoaded', applyURLParameters);
+        } catch (error) {
+            console.warn('Error applying URL parameters:', error);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const nav = document.querySelector('nav ul');
+        
+        if (mobileMenu && nav) {
+            mobileMenu.addEventListener('click', () => {
+                nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                nav.style.position = 'absolute';
+                nav.style.top = '100%';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                nav.style.background = 'var(--secondary-color)';
+                nav.style.flexDirection = 'column';
+                nav.style.padding = '1rem';
+                nav.style.boxShadow = 'var(--shadow)';
+            });
+        }
+
+        // Form submission handling
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you soon to discuss your demolition project.');
+                this.reset();
+            });
+        }
+
+        // Gallery item click handling
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // alert('Gallery image: ' + this.textContent);
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = `linear-gradient(135deg, ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color')} 0%, ${getComputedStyle(document.documentElement).getPropertyValue('--secondary-color')} 100%)`;
+                header.style.backdropFilter = 'blur(10px)';
+                header.style.opacity = '0.95';
+            } else {
+                header.style.background = `linear-gradient(135deg, ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color')} 0%, ${getComputedStyle(document.documentElement).getPropertyValue('--secondary-color')} 100%)`;
+                header.style.backdropFilter = 'none';
+                header.style.opacity = '1';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.service-card, .gallery-item, .about-content, .contact-content');
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        });
+
+        // Loading animation for page
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Initialize page
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.3s ease';
+
+        // Enhanced mobile menu functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.querySelector('.mobile-menu');
+            const nav = document.querySelector('nav ul');
+            let isMenuOpen = false;
+
+            if (mobileMenuBtn && nav) {
+                // Create mobile menu styles
+                const style = document.createElement('style');
+                style.textContent = `
+                    @media (max-width: 768px) {
+                        nav ul {
+                            display: none;
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            right: 0;
+                            background: var(--secondary-color);
+                            flex-direction: column;
+                            padding: 1rem 2rem;
+                            box-shadow: var(--shadow);
+                            z-index: 1000;
+                        }
+                        
+                        nav ul.mobile-open {
+                            display: flex !important;
+                        }
+                        
+                        nav ul li {
+                            margin: 0.5rem 0;
+                        }
+                        
+                        .mobile-menu.active span:nth-child(1) {
+                            transform: rotate(-45deg) translate(-5px, 6px);
+                        }
+                        
+                        .mobile-menu.active span:nth-child(2) {
+                            opacity: 0;
+                        }
+                        
+                        .mobile-menu.active span:nth-child(3) {
+                            transform: rotate(45deg) translate(-5px, -6px);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+
+                mobileMenuBtn.addEventListener('click', () => {
+                    isMenuOpen = !isMenuOpen;
+                    if (isMenuOpen) {
+                        nav.classList.add('mobile-open');
+                        mobileMenuBtn.classList.add('active');
+                    } else {
+                        nav.classList.remove('mobile-open');
+                        mobileMenuBtn.classList.remove('active');
+                    }
+                });
+
+                // Close menu when clicking on links
+                nav.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('mobile-open');
+                        mobileMenuBtn.classList.remove('active');
+                        isMenuOpen = false;
+                    });
+                });
+
+                // Close menu when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!mobileMenuBtn.contains(e.target) && !nav.contains(e.target)) {
+                        nav.classList.remove('mobile-open');
+                        mobileMenuBtn.classList.remove('active');
+                        isMenuOpen = false;
+                    }
+                });
+            }
+        });
+
+        // Enhanced form validation and submission
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('.contact-form form');
+            if (form) {
+                const inputs = form.querySelectorAll('input, textarea');
+                
+                // Add real-time validation
+                inputs.forEach(input => {
+                    input.addEventListener('blur', validateField);
+                    input.addEventListener('input', clearError);
+                });
+
+                form.addEventListener('submit', handleFormSubmit);
+            }
+        });
+
+        function validateField(e) {
+            const field = e.target;
+            const value = field.value.trim();
+            let isValid = true;
+            let errorMessage = '';
+
+            // Remove existing error
+            clearError({ target: field });
+
+            // Validate based on field type
+            switch(field.type) {
+                case 'email':
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (value && !emailRegex.test(value)) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid email address';
+                    }
+                    break;
+                case 'tel':
+                    const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
+                    if (value && !phoneRegex.test(value)) {
+                        isValid = false;
+                        errorMessage = 'Please enter a valid phone number';
+                    }
+                    break;
+                default:
+                    if (field.required && !value) {
+                        isValid = false;
+                        errorMessage = 'This field is required';
+                    }
+            }
+
+            if (!isValid) {
+                showError(field, errorMessage);
+            }
+
+            return isValid;
+        }
+
+        function clearError(e) {
+            const field = e.target;
+            const errorElement = field.parentNode.querySelector('.error-message');
+            if (errorElement) {
+                errorElement.remove();
+            }
+            field.style.borderColor = '';
+        }
+
+        function showError(field, message) {
+            field.style.borderColor = '#e74c3c';
+            
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            errorElement.style.color = '#e74c3c';
+            errorElement.style.fontSize = '0.9rem';
+            errorElement.style.marginTop = '0.25rem';
+            errorElement.textContent = message;
+            
+            field.parentNode.appendChild(errorElement);
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            let isFormValid = true;
+
+            // Validate all required fields
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!validateField({ target: field })) {
+                    isFormValid = false;
+                }
+            });
+
+            if (isFormValid) {
+                // Show success message
+                showSuccessMessage();
+                form.reset();
+            } else {
+                // Show error message
+                showFormError('Please correct the errors above and try again.');
+            }
+        }
+
+        function showSuccessMessage() {
+            const form = document.querySelector('.contact-form form');
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.style.cssText = `
+                background: #d4edda;
+                color: #155724;
+                padding: 1rem;
+                border-radius: 5px;
+                margin-bottom: 1rem;
+                border: 1px solid #c3e6cb;
+            `;
+            successDiv.innerHTML = `
+                <strong>Thank you!</strong> Your message has been sent successfully. 
+                We'll contact you soon to discuss your demolition project.
+            `;
+            
+            form.insertBefore(successDiv, form.firstChild);
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                if (successDiv.parentNode) {
+                    successDiv.remove();
+                }
+            }, 5000);
+        }
+
+        function showFormError(message) {
+            const form = document.querySelector('.contact-form form');
+            const existingError = form.querySelector('.form-error');
+            if (existingError) existingError.remove();
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'form-error';
+            errorDiv.style.cssText = `
+                background: #f8d7da;
+                color: #721c24;
+                padding: 1rem;
+                border-radius: 5px;
+                margin-bottom: 1rem;
+                border: 1px solid #f5c6cb;
+            `;
+            errorDiv.textContent = message;
+            
+            form.insertBefore(errorDiv, form.firstChild);
+        }
+
+        // Enhanced gallery functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    openGalleryModal(index);
+                });
+                
+                // Add keyboard navigation
+                item.setAttribute('tabindex', '0');
+                item.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openGalleryModal(index);
+                    }
+                });
+            });
+        });
+
+        function openGalleryModal(index) {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const clickedItem = galleryItems[index];
+            const img = clickedItem.querySelector('img');
+            
+            // If no image found, fall back to text display
+            if (!img) {
+                const fallbackText = clickedItem.textContent || `Gallery Item ${index + 1}`;
+                alert(`Gallery: ${fallbackText}`);
+                return;
+            }
+
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'gallery-modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2000;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                padding: 2rem;
+                box-sizing: border-box;
+            `;
+
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background: white;
+                border-radius: 10px;
+                max-width: 90vw;
+                max-height: 90vh;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+            `;
+
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '&times;';
+            closeBtn.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                background: none;
+                border: none;
+                font-size: 2rem;
+                cursor: pointer;
+                color: #666;
+                z-index: 10;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+
+            const modalImg = document.createElement('img');
+            modalImg.src = img.src;
+            modalImg.alt = img.alt;
+            modalImg.style.cssText = `
+                max-width: 100%;
+                max-height: 70vh;
+                object-fit: contain;
+                border-radius: 10px 10px 0 0;
+            `;
+
+            const caption = document.createElement('div');
+            caption.style.cssText = `
+                padding: 1.5rem;
+                background: white;
+                border-radius: 0 0 10px 10px;
+            `;
+
+            const captionText = document.createElement('p');
+            captionText.style.cssText = `
+                color: var(--secondary-color);
+                font-size: 1.1rem;
+                margin: 0;
+                font-family: var(--body-font);
+            `;
+            captionText.textContent = img.alt || 'Project Image';
+
+            // caption.appendChild(captionText);
+            modalContent.appendChild(closeBtn);
+            modalContent.appendChild(modalImg);
+            // modalContent.appendChild(caption);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+
+            // Show modal
+            setTimeout(() => modal.style.opacity = '1', 10);
+
+            // Close modal functionality
+            const closeModal = () => {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    if (modal.parentNode) {
+                        modal.remove();
+                    }
+                }, 300);
+            };
+
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function escapeHandler(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                    document.removeEventListener('keydown', escapeHandler);
+                }
+            });
+        }
+
+        // Utility function to ensure script compatibility
+        function ensureScriptCompatibility() {
+            // Make sure all elements needed by the script exist
+            if (!document.getElementById('page-title')) {
+                console.warn('Page title element not found');
+            }
+            
+            const businessNameElements = document.querySelectorAll('.business-name');
+            if (businessNameElements.length === 0) {
+                console.warn('Business name elements not found');
+            }
+            
+            // Verify CSS custom properties are supported
+            if (!CSS.supports('color', 'var(--primary-color)')) {
+                console.warn('CSS custom properties not supported');
+            }
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            ensureScriptCompatibility();
+            
+            // Apply any URL parameters that might already be present
+            if (window.location.search) {
+                applyURLParameters();
+            }
+        });
+    </script>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;c31a2817e033429a9907c2fff977468a&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+<script>
+    function scrollingMarquee() {
+        const root = document.documentElement;
+        const marqueeElementsDisplayed = getComputedStyle(root).getPropertyValue("--marquee-elements-displayed");
+        const marqueeContent = document.querySelector("ul.marquee-content");
+
+        root.style.setProperty("--marquee-elements", marqueeContent.children.length);
+
+        for(let i=0; i<marqueeElementsDisplayed; i++) {
+            marqueeContent.appendChild(marqueeContent.children[i].cloneNode(true));
+        }
+    }    
+
+    document.addEventListener('DOMContentLoaded', () => {
+            scrollingMarquee();
+    });
+</script>
+</body>
