@@ -1,0 +1,32 @@
+<head>
+    <link rel="stylesheet" href="marquee.css">
+</head>
+<body>
+    <div class="marquee">
+        <a class="marquee__item" target="_blank" href="https://www.buckeyenutrition.com/"><img src="images/product-logos/buckeye.svg" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://muckbootcompany.com/"><img src="images/product-logos/muck.png" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://migardener.com/"><img src="images/product-logos/migardener.png" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://promixnutrition.com/"><img src="images/product-logos/pro_mix.png" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://alfahay.net/"><img src="images/product-logos/honey_creek.jpg" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://foxfarm.com/"><img src="images/product-logos/fox_farm.jpg" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://www.scratchandpeck.com/"><img src="images/product-logos/scratch_n_peck.png" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://townlinehatchery.com/"><img src="images/product-logos/townline.jpg" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://dairydoo.com/"><img src="images/product-logos/morgan_composting.jpg" height="100" alt=""></a>
+        <a class="marquee__item" target="_blank" href="https://woodenspoonherbs.com/"><img src="images/product-logos/wooden_spoon.png" height="100" alt=""></a>
+    </div>
+    <script>
+        function marqueeIndex() {
+            const marqueeItems = document.querySelectorAll('.marquee__item');
+            let i = 0;
+            marqueeItems.forEach(item => {
+                item.style.setProperty('--marquee-item-index', i);
+                i++;
+            })
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            marqueeIndex();
+        });
+    </script>
+</body>
