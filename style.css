@@ -620,17 +620,20 @@ footer {
     color: #1a1a1a;
 }
 
-.sign-text {
+.footer-products {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+}
+
+.sign-text {
+    width: fit-content;
 }
 
 .sign-text p {
-    text-align: left;
     margin-bottom: 18px;
     padding:8px;
-    display: inline-block;
+    display: block;
     width: fit-content;
     font-family: "Gravitas One", serif;
     font-size: 1.5rem;
@@ -641,9 +644,14 @@ footer {
 }
 
 /* Responsive Design */
-
+@media (max-width: 1092px) {
+}
 
 @media (max-width: 870px) {
+    .sign-text p {
+        font-size: 1.3rem;
+        }
+
     .about-image {
         height: auto;
         width: 60%;
@@ -732,11 +740,29 @@ footer {
     }
 }
 
+@media (max-width: 763px) {
+    .sign-text p {
+        font-size: 1.1rem;
+    } 
+}
+
 @media (max-width: 735px) {
     .about-image {
         height: auto;
         width: 90%;
     }
+}
+
+@media (max-width: 664px) {
+    .sign-text p {
+        font-size: .9rem;
+    } 
+}
+
+@media (max-width: 607px) {
+    .sign-text p {
+        font-size: 1.2rem;
+    } 
 }
 
 @media (max-width: 480px) {
