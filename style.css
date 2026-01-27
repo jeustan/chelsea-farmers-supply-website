@@ -380,11 +380,12 @@ nav a:hover {
     width: 100%;
     font-family: var(--accordion-font);
     font-size: 1.1em;
+    border-bottom: 1px solid #66666650;
 }
 
-.accordion-content li:nth-child(2) {
+/* .accordion-content li:nth-child(2) {
     background-color: rgba(175, 218, 247, 0.4);
-}
+} */
 
 .accordion-content li:hover {
     background-color: rgb(225, 241, 78, .4);
@@ -592,6 +593,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 2rem;
+    
 }
 
 .footer-section h3 {
@@ -616,6 +618,24 @@ footer {
     border-top: 1px solid #34495e;
     padding-top: 1rem;
     color: #1a1a1a;
+}
+
+.sign-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 120px;
+}
+
+.sign-text p {
+    margin-bottom: 18px;
+    padding:8px;
+    display: inline-block;
+    width: fit-content;
+    font-family: "Gravitas One", serif;
+    font-size: 1.5rem;
+    color: #77002c;
+    line-height: .8;
+    background-color: white;
 }
 
 /* Responsive Design */
