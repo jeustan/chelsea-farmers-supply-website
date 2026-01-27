@@ -236,6 +236,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         form.addEventListener('submit', handleFormSubmit);
     }
+
+    // Newsletter form handling
+    const newsletterForm = document.querySelector('.newsletter-form form');
+    if (newsletterForm) {
+        const emailInput = newsletterForm.querySelector('input[type="email"]');
+        
+        if (emailInput) {
+            emailInput.addEventListener('blur', validateField);
+            emailInput.addEventListener('input', clearError);
+        }
+
+        newsletterForm.addEventListener('submit', handleNewsletterSubmit);
+    }
 });
 
 function validateField(e) {
@@ -371,6 +384,71 @@ function showFormError(message) {
     form.insertBefore(errorDiv, form.firstChild);
 }
 
+function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const emailInput = form.querySelector('input[type="email"]');
+    const email = emailInput.value.trim();
+    
+    // Simple email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showNewsletterError('Please enter a valid email address.');
+        return;
+    }
+    
+    // Show success message
+    showNewsletterSuccess();
+    form.reset();
+}
+
+function showNewsletterSuccess() {
+    const form = document.querySelector('.newsletter-form form');
+    const successDiv = document.createElement('div');
+    successDiv.className = 'success-message';
+    successDiv.style.cssText = `
+        background: #d4edda;
+        color: #155724;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        border: 1px solid #c3e6cb;
+    `;
+    successDiv.innerHTML = `
+        <strong>Thank you!</strong> You've been subscribed to our newsletter.
+    `;
+    
+    form.insertBefore(successDiv, form.firstChild);
+    
+    // Remove success message after 5 seconds
+    setTimeout(() => {
+        if (successDiv.parentNode) {
+            successDiv.remove();
+        }
+    }, 5000);
+}
+
+function showNewsletterError(message) {
+    const form = document.querySelector('.newsletter-form form');
+    const existingError = form.querySelector('.form-error');
+    if (existingError) existingError.remove();
+    
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'form-error';
+    errorDiv.style.cssText = `
+        background: #f8d7da;
+        color: #721c24;
+        padding: 1rem;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        border: 1px solid #f5c6cb;
+    `;
+    errorDiv.textContent = message;
+    
+    form.insertBefore(errorDiv, form.firstChild);
+}
+
 // Enhanced gallery functionality
 document.addEventListener('DOMContentLoaded', () => {
     const galleryItems = document.querySelectorAll('.gallery-item');
@@ -386,6 +464,28 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
                 openGalleryModal(index);
+            }
+        });
+    });
+});
+
+// Accordion functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all accordion items
+            document.querySelectorAll('.accordion-item').forEach(accItem => {
+                accItem.classList.remove('active');
+            });
+            
+            // Open the clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
             }
         });
     });
