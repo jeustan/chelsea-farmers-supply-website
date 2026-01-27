@@ -623,10 +623,11 @@ footer {
 .sign-text {
     display: flex;
     flex-direction: column;
-    margin-left: 120px;
+    align-items: flex-start;
 }
 
 .sign-text p {
+    text-align: left;
     margin-bottom: 18px;
     padding:8px;
     display: inline-block;
@@ -636,6 +637,7 @@ footer {
     color: #77002c;
     line-height: .8;
     background-color: white;
+    box-shadow: 2px 2px rgba(0,0,0,0.2);
 }
 
 /* Responsive Design */
