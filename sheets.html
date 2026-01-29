@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .contact-info {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .daily-blurb {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .daily-blurb h2 {
+            margin-top: 0;
+            color: #2c5aa0;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .hours {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our Business</h1>
+    
+    <!-- Daily Blurb Section -->
+    <div class="daily-blurb">
+        <h2>Today's Update</h2>
+        <div id="daily-content" class="loading">Loading today's message...</div>
+    </div>
+    
+    <!-- Contact Info Section -->
+    <div class="contact-info">
+        <h2>Contact & Hours</h2>
+        <div id="contact-content" class="loading">Loading contact information...</div>
+    </div>
+
+    <script>
+        // REPLACE THESE WITH YOUR ACTUAL GOOGLE SHEET IDs
+        const CONTACT_SHEET_ID = '1tAWs26KNxmRY6k_x27zHPXrD_igLMf_wUVa9CbKVsGw';
+        const BLURB_SHEET_ID = '1tAWs26KNxmRY6k_x27zHPXrD_igLMf_wUVa9CbKVsGw';
+        
+        // Function to fetch data from Google Sheets
+        async function fetchSheetData(sheetId, range = 'Sheet1') {
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&sheet=${range}`;
+            
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                
+                // Google Sheets returns JSONP, we need to extract the JSON
+                const json = JSON.parse(text.substring(47).slice(0, -2));
+                return json.table.rows;
+            } catch (error) {
+                console.error('Error fetching sheet data:', error);
+                return null;
+            }
+        }
+        
+        // Load contact info and hours
+        async function loadContactInfo() {
+            const rows = await fetchSheetData(CONTACT_SHEET_ID);
+            const contentDiv = document.getElementById('contact-content');
+            
+            if (!rows) {
+                contentDiv.innerHTML = '<p>Unable to load contact information.</p>';
+                return;
+            }
+            
+            let html = '';
+            rows.forEach(row => {
+                if (row.c && row.c[0] && row.c[0].v) {
+                    const label = row.c[0].v;
+                    const value = row.c[1] && row.c[1].v ? row.c[1].v : '';
+                    html += `<p><strong>${label}:</strong> ${value}</p>`;
+                }
+            });
+            
+            contentDiv.innerHTML = html;
+        }
+        
+        // Load daily blurb (gets the most recent entry)
+        async function loadDailyBlurb() {
+            const rows = await fetchSheetData(BLURB_SHEET_ID);
+            const contentDiv = document.getElementById('daily-content');
+            
+            if (!rows || rows.length === 0) {
+                contentDiv.innerHTML = '<p>No updates available.</p>';
+                return;
+            }
+            
+            // Get the last row (most recent entry)
+            const lastRow = rows[rows.length - 1];
+            
+            if (lastRow.c && lastRow.c[0] && lastRow.c[0].v) {
+                const date = lastRow.c[0].v;
+                const blurb = lastRow.c[1] && lastRow.c[1].v ? lastRow.c[1].v : '';
+                
+                contentDiv.innerHTML = `
+                    <p><strong>${date}</strong></p>
+                    <p>${blurb}</p>
+                `;
+            } else {
+                contentDiv.innerHTML = '<p>No updates available.</p>';
+            }
+        }
+        
+        // Load everything when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            loadContactInfo();
+            loadDailyBlurb();
+        });
+    </script>
+</body>
+</html>

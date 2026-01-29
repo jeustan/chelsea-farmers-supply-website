@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Chelsea Farmers Supply</title>
@@ -10,6 +12,7 @@
     <link href="marquee.css" rel="stylesheet">
     <link href="fonts.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href="substack.css" rel="stylesheet">
 </head>
 
 <body style="opacity: 1; transition: opacity 0.3s;">
@@ -94,7 +97,7 @@
             <div class="accordion-container">
                 <div class="accordion-column">
                     <div class="accordion-item">
-                        <button class="accordion-header">Feeds &amp; Seeds</button>
+                        <button id="feeds-seeds" class="accordion-header">Feeds &amp; Seeds</button>
                         <div class="accordion-content">
                             <ul>
                                 <li><a href="https://www.buckeyenutrition.com/" target="_blank">Buckeye Nutrition</a></li>
@@ -175,22 +178,18 @@
 
     <section id="newsletter" class="section">
         <div class="container">
+
             <div class="section-header">
                 <h2>Join our Newsletter!</h2>
                 <p>Stay updated with our latest products and farm tips</p>
             </div>
-            <div class="newsletter-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="name" id="name" name="name" required placeholder="Your name">
 
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="address@email.com">
-                    </div>
-                    <button type="submit" class="btn">Subscribe</button>
-                </form>
-            </div>
+            <!-- <div class="newsletter-form">
+                <iframe src="https://justinlts.substack.com/feed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+            </div> -->
+
+            <div class="substack-feed-embed" data-substack-url="justinlts.substack.com" data-posts="2" data-show-images="false"></div> 
+
         </div>
     </section>
 
@@ -269,4 +268,11 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <!-- <script> window.SubstackFeedWidget = 
+        {  substackUrl: 
+        "justinlts.substack.com", posts: 1, showImages: true, showDates: true
+        };   
+    </script> -->
+    <script src="embed-substack-rss.js"></script>
 </body>
+</html>
