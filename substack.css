@@ -1,8 +1,18 @@
+.newsletter-form { 
+    margin-bottom: 40px; 
+}
+
+.substack-feed-embed {
+    border: 1px dashed #24242460;
+    padding: 14px;
+}
+
 .substack-feed-embed { 
     display: grid; 
     gap: 20px; 
 } 
 .substack-post { 
+    background-color: beige;
     display: flex; 
     gap: 15px; 
     align-items: flex-start; 
