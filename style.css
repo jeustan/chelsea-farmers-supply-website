@@ -643,12 +643,6 @@ footer {
     box-shadow: 2px 2px rgba(0,0,0,0.2);
 }
 
-main div.sign-text a:nth-child(3) {
-    color:blue;
-    text-decoration: underline;
-    margin-bottom: 250px;
-}
-
 .rotate-sign {
     transform: rotate(-1deg);
 }
