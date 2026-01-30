@@ -40,7 +40,14 @@
     return m ? m[1] : null;
   };
 
-  const truncate = (str, max = 150) => (str && str.length > max ? `${str.slice(0, max)}…` : (str || ''));
+  const truncate = (str, max = 2500) => (str && str.length > max ? `${str.slice(0, max)}…` : (str || ''));
+  const truncateContent = (html) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const elements = doc.querySelectorAll('p, img');
+    return Array.from(elements).map(el => el.outerHTML).join('');
+    // return Array.from(elements).slice(0, 3).map(el => el.outerHTML).join('');
+  };
 
   const buildCard = (post, opts) => {
     const a = document.createElement('a');
@@ -85,9 +92,18 @@
     pDesc.textContent = truncate(post.description, 160);
     body.appendChild(pDesc);
 
+    const pContent = document.createElement('div');
+    pContent.className = 'substack-content';
+    pContent.innerHTML = truncateContent(post.content);
+
+    body.appendChild(pContent);
+   
     wrap.appendChild(body);
-    a.appendChild(wrap);
-    return a;
+
+    // Make whole card link to substack post
+    // a.appendChild(wrap);
+    return wrap
+
   };
 
   const fetchWithTimeout = (url, ms = 10000) => {
@@ -110,7 +126,6 @@
     }
 
     const feedBase = normalizeUrl(cfg.substackUrl);
-    
     
     // (copilot) Add timestamp to bust rss2json cache (it can cache empty results for a while)
     const ts = new Date().getTime();

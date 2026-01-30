@@ -1,4 +1,4 @@
-.newsletter-form { 
+/* .newsletter-form { 
     margin-bottom: 40px; 
 }
 
@@ -13,9 +13,10 @@
 } 
 .substack-post { 
     background-color: beige;
-    display: flex; 
-    gap: 15px; 
-    align-items: flex-start; 
+    display: flex;  */
+    /* align-items: flex-start;  */
+    /* gap: 15px; 
+    width: 10%;
     margin-bottom: 20px; 
     padding: 15px; 
     border: 1px solid #eee; 
@@ -32,4 +33,4 @@
 
 .substack-post div { 
     flex: 1; 
-} 
+}  */

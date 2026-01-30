@@ -502,21 +502,6 @@ nav a:hover {
     transform: scale(1.05);
 }
 
-/* Substack Newsletter Section */
-#myIframe {
-    width: 480px;
-    height: 320px;
-    border:1px solid #EEE;
-    background:white;
-    margin: 0 auto;
-}
-
-.substack-iframe-container {
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0 2rem 0;
-}
-
 /* Contact Section */
 .contact-content {
     display: grid;
@@ -619,6 +604,31 @@ nav a:hover {
 }
 
 /* Newsletter Section */
+.newsletter-section-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 3rem;
+    justify-content: center;
+}
+
+#myIframe {
+    width:100%;
+    height: 100%;
+    border:1px solid #EEE;
+    background:white;
+    margin: 0 auto;
+}
+
+.substack-iframe-container {
+    height:400px;
+    min-width: 320px;
+}
+
+.substack-feed-embed{
+    display: flex;
+    justify-content: center;
+}
+
 .newsletter-form {
     max-width: 500px;
     margin: 0 auto;
@@ -654,6 +664,57 @@ nav a:hover {
 .newsletter-form .btn:hover {
     background: var(--primary-light);
 }
+
+.newsletter-form { 
+    margin-bottom: 40px; 
+}
+
+.substack-feed-embed {
+    border: 1px dashed #24242460;
+    padding: 14px;
+}
+
+
+.substack-post { 
+    background-color: beige;
+    margin-bottom: 20px; 
+    padding: 15px; 
+    border: 1px solid #eee; 
+    border-radius: 8px; 
+}
+
+.substack-content {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 15px;
+}
+
+.substack-content img {
+    max-width: 80%;
+    align-self: center;
+    height: auto;
+    border-radius: 8px;
+}
+
+.substack-post div {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 15px; 
+}
+
+.substack-thumbnail { 
+    width: 120px; 
+    height: 120px; 
+    object-fit: cover; 
+    border-radius: 8px; 
+    flex-shrink: 0; 
+} 
+
+.substack-post div { 
+    flex: 1; 
+} 
 
 /* Footer */
 footer {
@@ -729,6 +790,17 @@ footer {
     .map-iframe-container {
         aspect-ratio: 1;
     }
+
+    .newsletter-section-content {
+        grid-template-columns: 1fr;
+    }
+
+    .substack-iframe-container {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
 }
 
 @media (max-width: 870px) {
