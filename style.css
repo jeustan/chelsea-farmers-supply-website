@@ -569,10 +569,6 @@ nav a:hover {
     border-color: var(--primary-color);
 }
 
-.contact-info {
-    /* padding: 2rem; */
-}
-
 .contact-info h3 {
     font-family: var(--heading-font);
     font-size: 1.8rem;
@@ -739,7 +735,7 @@ footer {
     }
 
     .map-iframe-container {
-        width: 60%;
+        width: 75%;
     }
 
     .contact-info, .map-iframe-container {
@@ -850,6 +846,10 @@ footer {
 }
 
 @media (max-width: 763px) {
+    .map-iframe-container {
+        width: 90%;
+    }
+
     .sign-text {
         width: 310px;
     }
@@ -873,14 +873,8 @@ footer {
 }
 
 @media (max-width: 607px) {
-    .sign-text p {
-        font-size: 1.2rem;
-    } 
-}
-
-@media (max-width: 532px) {
-    #myIframe {
-        max-width: 90%;
+    .map-iframe-container {
+        width:100%;
     }
 }
 
