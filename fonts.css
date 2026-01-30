@@ -1,3 +1,17 @@
+/* GOOGLE */
+.calistoga-regular {
+  font-family: "Calistoga", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gravitas-one-regular {
+  font-family: "Gravitas One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 /* cyrillic-ext */
 @font-face {
   font-family: 'Open Sans';

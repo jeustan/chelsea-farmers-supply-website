@@ -1,3 +1,8 @@
+function footerSignTextClick() {
+    console.log("Footer sign text clicked");
+}
+
+
 
 function applyURLParameters() {
     const params = new URLSearchParams(window.location.search);
@@ -647,6 +652,11 @@ function marqueeIndex() {
 document.addEventListener('DOMContentLoaded', () => {
     ensureScriptCompatibility();
     marqueeIndex();
+    var iframe = document.getElementById("myIframe");
+    if(iframe) {
+        iframe.src = 'https://justinlts.substack.com/embed';
+    }
+
     // Apply any URL parameters that might already be present
     if (window.location.search) {
         applyURLParameters();
