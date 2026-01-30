@@ -11,7 +11,7 @@
   const globalDefaults = (window.SubstackFeedWidget || {});
   const defaults = {
     substackUrl: '',
-    posts: 3,
+    posts: 1,
     showImages: true,
     showDates: true,
     ...globalDefaults

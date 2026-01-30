@@ -1,6 +1,3 @@
-function footerSignTextClick() {
-    console.log("Footer sign text clicked");
-}
 
 
 
@@ -20,7 +17,7 @@ function applyURLParameters() {
             paletteColors.push(color.startsWith('#') ? color : `#${color}`);
         }
     }
-
+    
     // Update business name
     if (businessName) {
         const nameElements = document.querySelectorAll('.business-name');
@@ -35,7 +32,7 @@ function applyURLParameters() {
             titleElement.textContent = businessName;
         }
     }
-
+    
     // Update colors using palette if available, otherwise fallback to primary
     if (paletteColors.length > 0) {
         // Use generated palette colors
@@ -67,20 +64,20 @@ function applyURLParameters() {
             document.documentElement.style.setProperty('--primary-color', fullHex);
         }
     }
-
+    
     // Update fonts
     if (titleFont && typeof titleFont === 'string' && titleFont.trim()) {
         document.documentElement.style.setProperty('--heading-font', `'${titleFont}', serif`);
         document.documentElement.style.setProperty('--font-heading', `'${titleFont}', serif`);
     }
-
+    
     if (bodyFont && typeof bodyFont === 'string' && bodyFont.trim()) {
         document.documentElement.style.setProperty('--body-font', `'${bodyFont}', sans-serif`);
         document.documentElement.style.setProperty('--font-body', `'${bodyFont}', sans-serif`);
     }
 }
 
-    // Helper function to adjust brightness with safety checks
+// Helper function to adjust brightness with safety checks
 function adjustBrightness(hex, percent) {
     if (!hex || typeof hex !== 'string') return null;
     
@@ -98,7 +95,7 @@ function adjustBrightness(hex, percent) {
     return "#" + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
 }
 
-    // Apply parameters when page loads with error handling
+// Apply parameters when page loads with error handling
 try {
     document.addEventListener('DOMContentLoaded', applyURLParameters);
 } catch (error) {
@@ -114,7 +111,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             const headerOffset = 80;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+            
             window.scrollTo({
                 top: offsetPosition,
                 behavior: 'smooth'
@@ -194,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.querySelector('.mobile-menu');
     const nav = document.querySelector('nav ul');
     let isMenuOpen = false;
-
+    
     if (mobileMenuBtn && nav) {
         mobileMenuBtn.addEventListener('click', () => {
             isMenuOpen = !isMenuOpen;
@@ -215,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isMenuOpen = false;
             });
         });
-
+        
         // Close menu when clicking outside
         document.addEventListener('click', (e) => {
             if (!mobileMenuBtn.contains(e.target) && !nav.contains(e.target)) {
@@ -238,10 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
             input.addEventListener('blur', validateField);
             input.addEventListener('input', clearError);
         });
-
+        
         form.addEventListener('submit', handleFormSubmit);
     }
-
+    
     // Newsletter form handling
     const newsletterForm = document.querySelector('.newsletter-form form');
     if (newsletterForm) {
@@ -261,7 +258,7 @@ function validateField(e) {
     const value = field.value.trim();
     let isValid = true;
     let errorMessage = '';
-
+    
     // Remove existing error
     clearError({ target: field });
 
@@ -274,24 +271,24 @@ function validateField(e) {
                 errorMessage = 'Please enter a valid email address';
             }
             break;
-        case 'tel':
-            const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
-            if (value && !phoneRegex.test(value)) {
-                isValid = false;
-                errorMessage = 'Please enter a valid phone number';
-            }
-            break;
-        default:
-            if (field.required && !value) {
+            case 'tel':
+                const phoneRegex = /^[\d\s\-\(\)\+\.]+$/;
+                if (value && !phoneRegex.test(value)) {
+                    isValid = false;
+                    errorMessage = 'Please enter a valid phone number';
+                }
+                break;
+                default:
+                    if (field.required && !value) {
                 isValid = false;
                 errorMessage = 'This field is required';
             }
-    }
+        }
 
     if (!isValid) {
         showError(field, errorMessage);
     }
-
+    
     return isValid;
 }
 
@@ -323,7 +320,7 @@ function handleFormSubmit(e) {
     const form = e.target;
     const formData = new FormData(form);
     let isFormValid = true;
-
+    
     // Validate all required fields
     const requiredFields = form.querySelectorAll('[required]');
     requiredFields.forEach(field => {
@@ -353,15 +350,15 @@ function showSuccessMessage() {
         border-radius: 5px;
         margin-bottom: 1rem;
         border: 1px solid #c3e6cb;
-    `;
-    successDiv.innerHTML = `
+        `;
+        successDiv.innerHTML = `
         <strong>Thank you!</strong> Your message has been sent successfully. 
         We'll contact you soon to discuss your demolition project.
-    `;
-    
-    form.insertBefore(successDiv, form.firstChild);
-    
-    // Remove success message after 5 seconds
+        `;
+        
+        form.insertBefore(successDiv, form.firstChild);
+        
+        // Remove success message after 5 seconds
     setTimeout(() => {
         if (successDiv.parentNode) {
             successDiv.remove();
@@ -377,12 +374,12 @@ function showFormError(message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'form-error';
     errorDiv.style.cssText = `
-        background: #f8d7da;
-        color: #721c24;
-        padding: 1rem;
-        border-radius: 5px;
-        margin-bottom: 1rem;
-        border: 1px solid #f5c6cb;
+    background: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    border: 1px solid #f5c6cb;
     `;
     errorDiv.textContent = message;
     
@@ -413,26 +410,26 @@ function showNewsletterSuccess() {
     const successDiv = document.createElement('div');
     successDiv.className = 'success-message';
     successDiv.style.cssText = `
-        background: #d4edda;
+    background: #d4edda;
         color: #155724;
         padding: 1rem;
         border-radius: 5px;
         margin-bottom: 1rem;
         border: 1px solid #c3e6cb;
-    `;
-    successDiv.innerHTML = `
+        `;
+        successDiv.innerHTML = `
         <strong>Thank you!</strong> You've been subscribed to our newsletter.
-    `;
-    
-    form.insertBefore(successDiv, form.firstChild);
-    
-    // Remove success message after 5 seconds
-    setTimeout(() => {
-        if (successDiv.parentNode) {
-            successDiv.remove();
-        }
-    }, 5000);
-}
+        `;
+        
+        form.insertBefore(successDiv, form.firstChild);
+        
+        // Remove success message after 5 seconds
+        setTimeout(() => {
+            if (successDiv.parentNode) {
+                successDiv.remove();
+            }
+        }, 5000);
+    }
 
 function showNewsletterError(message) {
     const form = document.querySelector('.newsletter-form form');
@@ -442,13 +439,13 @@ function showNewsletterError(message) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'form-error';
     errorDiv.style.cssText = `
-        background: #f8d7da;
+    background: #f8d7da;
         color: #721c24;
         padding: 1rem;
         border-radius: 5px;
         margin-bottom: 1rem;
         border: 1px solid #f5c6cb;
-    `;
+        `;
     errorDiv.textContent = message;
     
     form.insertBefore(errorDiv, form.firstChild);
@@ -474,6 +471,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function closeAccordionItems() {
+    document.querySelectorAll('.accordion-item').forEach(accItem => {
+        accItem.classList.remove('active');
+    });
+}
+
+function footerSignClick(category) {
+    const header = document.querySelector(`#${category}`);
+    item = header.parentElement;
+    const isActive = item.classList.contains('active');
+
+    closeAccordionItems();
+
+    if (!isActive) {
+        item.classList.add('active');
+    }
+    
+}
+
 // Accordion functionality
 document.addEventListener('DOMContentLoaded', () => {
     const accordionHeaders = document.querySelectorAll('.accordion-header');
@@ -484,9 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isActive = item.classList.contains('active');
             
             // Close all accordion items
-            document.querySelectorAll('.accordion-item').forEach(accItem => {
-                accItem.classList.remove('active');
-            });
+            closeAccordionItems();
             
             // Open the clicked item if it wasn't active
             if (!isActive) {

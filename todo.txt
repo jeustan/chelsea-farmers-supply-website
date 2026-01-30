@@ -1,3 +1,7 @@
 -make the dropdown hoverover so it doesn't expand the page, overflows
 
 -one most recent newsletter post, side by side to subscribe button
+
+-small viewport footer signtext left margin
+
+-google maps embed

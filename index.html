@@ -188,11 +188,11 @@
                     <p>Stay updated with our latest products and farm tips</p>
                 </div>
     
-            
-                <iframe id="myIframe" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+                <div class="iframe-container">
+                    <iframe id="myIframe" frameborder="0" scrolling="no"></iframe>
+                </div>
                 
-    
-                <div class="substack-feed-embed" data-substack-url="justinlts.substack.com" data-posts="2" data-show-images="false"></div>
+                <div class="substack-feed-embed" data-substack-url="justinlts.substack.com" data-posts="1" data-show-images="false"></div>
     
     
             </div>
@@ -253,12 +253,12 @@
                     <div class="footer-section footer-products">
                         <h3>Products</h3>
                         <div class="sign-text">
-                            <a href="#products" onclick="document.getElementById('feeds-seeds').click();"><p>FEED &amp; SEED</p></a>
-                            <a href="#products" onclick="document.getElementById('pet-food').click();"><p>PET SUPPLIES</p></a>
-                            <a href="#products" onclick="document.getElementById('soil-gardening').click();"><p class="rotate-sign">LAWN &amp; GARDEN</p></a>
-                            <a href="#products" onclick="document.getElementById('feeds-seeds').click();"><p class="rotate-sign">WILD BIRD SUPPLIES</p></a>
+                            <a href="#products" onclick="footerSignClick(`feeds-seeds`)"><p>FEED &amp; SEED</p></a>
+                            <a href="#products" onclick="footerSignClick(`pet-food`)"><p>PET SUPPLIES</p></a>
+                            <a href="#products" onclick="footerSignClick(`soil-gardening`)"><p class="rotate-sign">LAWN &amp; GARDEN</p></a>
+                            <a href="#products" onclick="footerSignClick(`feeds-seeds`)"><p class="rotate-sign">WILD BIRD SUPPLIES</p></a>
                         </div>
-    
+                        
                     </div>
                     <div class="footer-section">
                         <h3>Contact</h3>
