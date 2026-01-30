@@ -652,9 +652,11 @@ function marqueeIndex() {
 document.addEventListener('DOMContentLoaded', () => {
     ensureScriptCompatibility();
     marqueeIndex();
+    console.log("Script initialized");
     var iframe = document.getElementById("myIframe");
     if(iframe) {
         iframe.src = 'https://justinlts.substack.com/embed';
+        console.log("Iframe source set");
     }
 
     // Apply any URL parameters that might already be present
