@@ -652,15 +652,22 @@ function marqueeIndex() {
 document.addEventListener('DOMContentLoaded', () => {
     ensureScriptCompatibility();
     marqueeIndex();
-    console.log("Script initialized");
-    var iframe = document.getElementById("myIframe");
-    if(iframe) {
-        iframe.src = 'https://justinlts.substack.com/embed';
-        console.log("Iframe source set");
-    }
 
     // Apply any URL parameters that might already be present
     if (window.location.search) {
         applyURLParameters();
     }
 });
+
+function loadDeferredIframe() {
+    var iframe = document.getElementById("myIframe");
+    iframe.src = 'https://justinlts.substack.com/embed';
+}
+
+if (window.addEventListener) {
+    window.addEventListener("load", loadDeferredIframe, false);
+} else if (window.attachEvent) {
+    window.attachEvent("onload", loadDeferredIframe);
+} else {
+    window.onload = loadDeferredIframe;
+}
