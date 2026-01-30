@@ -870,10 +870,6 @@ footer {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
     
-    .section {
-        padding: 3rem 0;
-    }
-    
     .section-header h2 {
         font-size: 2rem;
     }
