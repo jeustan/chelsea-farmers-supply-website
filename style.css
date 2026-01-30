@@ -520,14 +520,14 @@ nav a:hover {
 /* Contact Section */
 .contact-content {
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 4rem;
-    justify-content: space-evenly;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    justify-content: center;
 }
 
 .map-iframe-container {
     /* padding:2rem; */
-    aspect-ratio: 1;
+    aspect-ratio: 1.5/1;
 }
 
 #map-iframe {
@@ -725,7 +725,10 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 1092px) {
+@media (max-width: 1024px) {
+    .map-iframe-container {
+        aspect-ratio: 1;
+    }
 }
 
 @media (max-width: 870px) {
