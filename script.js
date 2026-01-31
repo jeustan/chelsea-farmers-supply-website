@@ -695,8 +695,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function loadDeferredIframe() {
     var subscribeIframe = document.getElementById("subscribeStack");
-    subscribeIframe.src = 'https://justinlts.substack.com/embed';
     embedSubstackRSS();
+    subscribeIframe.src = 'https://justinlts.substack.com/embed';
 }
 
 if (window.addEventListener) {
