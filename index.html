@@ -3,10 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Chelsea Farmers Supply</title>
-    <link rel="icon" type="image/svg+xml" href="fav.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Calistoga&family=Gravitas+One&display=swap" rel="stylesheet">     
+    <link rel="icon" type="image/svg+xml" href="fav.svg">  
     <link href="fonts.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <link href="substack.css" rel="stylesheet">
@@ -40,8 +37,7 @@
         </div>
     </header>
 
-    <main>
-        
+    <main> 
         <section id="home" class="hero">
             <div class="hero-content">
                 <h1>Dependable Supplies for Every Season</h1>
@@ -118,7 +114,7 @@
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header">Farm Supply</button>
+                            <button id="farm-supply" class="accordion-header">Farm Supply</button>
                             <div class="accordion-content">
                                 <ul>
                                     <li><a href="https://townlinehatchery.com/" target="_blank">Townline Poultry Farm</a></li>
@@ -126,7 +122,7 @@
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header">Footwear &amp; Apparel</button>
+                            <button id="footwear" class="accordion-header">Footwear &amp; Apparel</button>
                             <div class="accordion-content">
                                 <ul>
                                     <li><a href="https://muckbootcompany.com/" target="_blank">Muck Boot Company</a></li>
@@ -155,7 +151,7 @@
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header">Hay &amp; Bedding</button>
+                            <button id="hay" class="accordion-header">Hay &amp; Bedding</button>
                             <div class="accordion-content">
                                 <ul>
                                     <li><a href="https://alfahay.net/" target="_blank">Honey Creek Alfahay</a></li>
@@ -165,7 +161,7 @@
                             
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header">Foods &amp; Supplements</button>
+                            <button id="foods" class="accordion-header">Foods &amp; Supplements</button>
                             <div class="accordion-content">
                                 <ul>
                                     <li><a href="https://woodenspoonherbs.com/" target="_blank">Wooden Spoon Herbs</a></li>
@@ -173,7 +169,7 @@
                             </div>
                         </div>
                         <div class="accordion-item">
-                            <button class="accordion-header">Kitchen</button>
+                            <button id="kitchen" class="accordion-header">Kitchen</button>
                             <div class="accordion-content">
                                 <ul>
                                     <li><a href="https://www.ballmasonjars.com/" target="_blank">Ball Mason Jars</a></li>
@@ -198,7 +194,7 @@
                     <div class="substack-feed-embed" data-substack-url="justinlts.substack.com" data-posts="1" data-show-images="false"></div>
                     
                     <div class="substack-iframe-container">
-                        <iframe id="myIframe" frameborder="0" scrolling="no"></iframe>
+                        <iframe id="subscribeStack" frameborder="0" scrolling="no"></iframe>
                     </div>
                     
                 </div>
@@ -263,10 +259,10 @@
                     <div class="footer-section footer-products">
                         <h3>Products</h3>
                         <div class="sign-text">
-                            <a href="#products" onclick="footerSignClick(`feeds-seeds`)"><p>FEED &amp; SEED</p></a>
-                            <a href="#products" onclick="footerSignClick(`pet-food`)"><p>PET SUPPLIES</p></a>
-                            <a href="#products" onclick="footerSignClick(`soil-gardening`)"><p class="rotate-sign">LAWN &amp; GARDEN</p></a>
-                            <a href="#products" onclick="footerSignClick(`feeds-seeds`)"><p class="rotate-sign">WILD BIRD SUPPLIES</p></a>
+                            <a href="#feeds-seeds" class="sign-link"><p>FEED &amp; SEED</p></a>
+                            <a href="#pet-food" class="sign-link"><p>PET SUPPLIES</p></a>
+                            <a href="#soil-gardening" class="sign-link"><p class="rotate-sign">LAWN &amp; GARDEN</p></a>
+                            <a href="#feeds-seeds" class="sign-link"><p class="rotate-sign">WILD BIRD SUPPLIES</p></a>
                         </div>
                         
                     </div>

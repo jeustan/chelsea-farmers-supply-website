@@ -1,3 +1,11 @@
+@font-face {
+    font-family: "Gravitas One";
+    src: local("Gravitas One"),
+         url("fonts/Gravitas_One/GravitasOne-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --primary-color: #ffffff;
     --secondary-color: #060b00ff;
@@ -37,6 +45,10 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     scroll-behavior: smooth;
+}
+
+#feeds-seeds {
+    scroll-padding-top:1500px;
 }
 
 /* Header */
@@ -169,6 +181,11 @@ nav a:hover {
 /* Sections */
 .section {
     padding: 5rem 0 5rem 0;
+    /* scroll-margin-top: 6em; */
+}
+
+html {
+    scroll-margin-top: 6em;
 }
 
 .section:nth-child(even) {

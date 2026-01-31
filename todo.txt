@@ -4,12 +4,14 @@ TO DO:
 
 -make substack newsletter content and map embed load after page loads
 
--fix nav section padding for small screens
-
 -fix footer click function
+
+-fix category offset scroll position
 
 ------- ------- ------- ------- ------- ------- ------- ------- -------
 DONE:
+
+x fix nav section padding for small screens
 
 x one most recent newsletter post, side by side to subscribe button
 

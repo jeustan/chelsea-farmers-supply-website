@@ -7,7 +7,7 @@
  * Optional global defaults:
  *   window.SubstackFeedWidget = { substackUrl: '', posts: 3, showImages: true, showDates: true };
  */
-(function () {
+function embedSubstackRSS () {
   const globalDefaults = (window.SubstackFeedWidget || {});
   const defaults = {
     substackUrl: '',
@@ -163,4 +163,4 @@
       container.innerHTML = '<p class="substack-error">Could not load posts. Please try again later.</p>';
     }
   });
-})();
+}

@@ -107,18 +107,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
+        const isSign = this.classList.contains('sign-link');
+
+        if(target && isSign) {
+            footerSignClick(this.getAttribute("href"));
+            const headerOffset = 180;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+            console.log(headerOffset);
+            scrollTo(offsetPosition);
+        } else if (target && !isSign) {
             const headerOffset = 80;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
+            scrollTo(offsetPosition);
         }
     });
+
+    function scrollTo(offset) {
+        window.scrollTo({
+            top: offset,
+            behavior: 'smooth'
+        });
+    }
 });
+
 
 // Form submission handling
 const contactForm = document.querySelector('.contact-form form');
@@ -471,18 +484,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function closeAccordionItems() {
+function closeAccordionItems(cat) {
     document.querySelectorAll('.accordion-item').forEach(accItem => {
         accItem.classList.remove('active');
     });
+
+    return cat;
 }
 
+// Sign text in footer navs to products accordion
 function footerSignClick(category) {
-    const header = document.querySelector(`#${category}`);
-    item = header.parentElement;
-    const isActive = item.classList.contains('active');
+    console.log(`category: ${category}`)
 
-    closeAccordionItems();
+    // Close all accordion items
+    const callback = closeAccordionItems(category);
+
+    const header = document.querySelector(callback);
+    const item = header.parentElement;
+    const isActive = item.classList.contains('active');
 
     if (!isActive) {
         item.classList.add('active');
@@ -496,16 +515,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
-            const item = header.parentElement;
-            const isActive = item.classList.contains('active');
-            
             // Close all accordion items
             closeAccordionItems();
+            footerSignClick(`#${header.id}`);
+            
+            // const item = header.parentElement;
+            // const isActive = item.classList.contains('active');
             
             // Open the clicked item if it wasn't active
-            if (!isActive) {
-                item.classList.add('active');
-            }
+            // if (!isActive) {
+            //     item.classList.add('active');
+            // }
         });
     });
 });
@@ -674,8 +694,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadDeferredIframe() {
-    var iframe = document.getElementById("myIframe");
-    iframe.src = 'https://justinlts.substack.com/embed';
+    var subscribeIframe = document.getElementById("subscribeStack");
+    subscribeIframe.src = 'https://justinlts.substack.com/embed';
+    embedSubstackRSS();
 }
 
 if (window.addEventListener) {
