@@ -2,11 +2,7 @@ TO DO:
 
 -make the dropdown hoverover so it doesn't expand the page, overflows
 
--make substack newsletter content and map embed load after page loads
-
--fix footer click function
-
--fix category offset scroll position
+-allow for product dropdown to close
 
 ------- ------- ------- ------- ------- ------- ------- ------- -------
 DONE:
@@ -18,3 +14,9 @@ x one most recent newsletter post, side by side to subscribe button
 x small viewport footer signtext left margin
 
 x google maps embed
+
+x fix category offset scroll position
+
+x fix footer click function
+
+x make substack newsletter content and map embed load after page loads

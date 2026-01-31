@@ -484,29 +484,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function closeAccordionItems(cat) {
+function closeAccordionItems() {
     document.querySelectorAll('.accordion-item').forEach(accItem => {
         accItem.classList.remove('active');
     });
-
-    return cat;
 }
 
 // Sign text in footer navs to products accordion
 function footerSignClick(category) {
-    console.log(`category: ${category}`)
+    const header = document.querySelector(category);
+    const item = header.parentElement;
+    var isActive = item.classList.contains('active');
+
+    if(isActive) {
+        item.classList.remove("active");
+        return;
+    }
 
     // Close all accordion items
-    const callback = closeAccordionItems(category);
+    closeAccordionItems();
 
-    const header = document.querySelector(callback);
-    const item = header.parentElement;
-    const isActive = item.classList.contains('active');
-
+    // Check again if active and apply active class
+    isActive = item.classList.contains('active');
     if (!isActive) {
         item.classList.add('active');
     }
-    
 }
 
 // Accordion functionality
@@ -515,17 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
-            // Close all accordion items
-            closeAccordionItems();
             footerSignClick(`#${header.id}`);
-            
-            // const item = header.parentElement;
-            // const isActive = item.classList.contains('active');
-            
-            // Open the clicked item if it wasn't active
-            // if (!isActive) {
-            //     item.classList.add('active');
-            // }
         });
     });
 });
