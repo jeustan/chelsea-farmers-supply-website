@@ -692,12 +692,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function loadDeferredIframe() {
-    const subscribeIframe = document.getElementById("subscribeStack");
-    const mapIframe = document.getElementById("map-iframe");
+async function loadDeferredIframe() {
+    const sub = document.getElementById("subscribeStack");
+    const map = document.getElementById("map-iframe");
 
-    if(subscribeIframe) subscribeIframe.src = 'https://justinlts.substack.com/embed';
-    if(mapIframe) mapIframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1608.528046909094!2d-84.0224308770352!3d42.32006010989635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883ccc01ab9c8f33%3A0x7a8fb28bf5f296ec!2sChelsea%20Farmers%20Supply!5e0!3m2!1sen!2sus!4v1769795936137!5m2!1sen!2sus";
+    const yieldToMain = () => new Promise(resolve => setTimeout(resolve, 0));
+
+    if(sub) sub.src = 'https://justinlts.substack.com/embed';
+    await yieldToMain();
+
+    if(map) map.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1608.528046909094!2d-84.0224308770352!3d42.32006010989635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883ccc01ab9c8f33%3A0x7a8fb28bf5f296ec!2sChelsea%20Farmers%20Supply!5e0!3m2!1sen!2sus!4v1769795936137!5m2!1sen!2sus";
+    await yieldToMain();
     
     function tryRSS() {
         if(typeof embedSubstackRSS === "function") {
