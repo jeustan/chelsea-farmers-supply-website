@@ -7,6 +7,8 @@
     <link href="fonts.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <link href="substack.css" rel="stylesheet">
+    <link rel="preconnect" href="https://api.rss2json.com">
+    <link rel="preconnect" href="https://justinlts.substack.com">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     
 </head>
@@ -14,9 +16,9 @@
 <body style="opacity: 1; transition: opacity 0.3s;">
     <header style="background: linear-gradient(135deg, #ffffff 0%, #e9e5e2 100%); backdrop-filter: none; opacity: 1;">
         <div class="header-content">
-            <div class="logo business-name">
+            <div class="logo business-name svg-container">
                 <a href="#home">
-                    <img src="./images/logo_vect_no_horse.svg" class="logo-image">
+                    <img src="./images/logo_vect_no_horse.svg" alt="Chelsea Farmers Supply Logo" class="logo-image" decoding="async" loading="lazy">
                 </a>
             </div>
             <h1 display:none></h1>
@@ -61,7 +63,7 @@
                         <div class="about-photo" 
                             style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s, transform 0.6s;"
                             tabindex="0">
-                            <img src="./images/signboard.svg" 
+                            <img src="./images/signboard.png" 
                                 alt="Vintage style store sign: 
                                 Take a trip back to the good old days of good service, 
                                 quality products & low prices just a few minutes from home.
