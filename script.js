@@ -110,7 +110,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const isSign = this.classList.contains('sign-link');
 
         if(target && isSign) {
-            footerSignClick(this.getAttribute("href"));
+            accordionToggle(this.getAttribute("href"));
             const headerOffset = 180;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset
@@ -491,7 +491,7 @@ function closeAccordionItems() {
 }
 
 // Sign text in footer navs to products accordion
-function footerSignClick(category) {
+function accordionToggle(category) {
     const header = document.querySelector(category);
     const item = header.parentElement;
     var isActive = item.classList.contains('active');
@@ -514,10 +514,17 @@ function footerSignClick(category) {
 // Accordion functionality
 document.addEventListener('DOMContentLoaded', () => {
     const accordionHeaders = document.querySelectorAll('.accordion-header');
+    const closeButtons = document.querySelectorAll('.close-accordion');
     
     accordionHeaders.forEach(header => {
         header.addEventListener('click', () => {
-            footerSignClick(`#${header.id}`);
+            accordionToggle(`#${header.id}`);
+        });
+    });
+
+    closeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            closeAccordionItems();
         });
     });
 });
@@ -686,17 +693,24 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function loadDeferredIframe() {
-    var subscribeIframe = document.getElementById("subscribeStack");
-    var mapIframe = document.getElementById("map-iframe");
-    embedSubstackRSS();
-    subscribeIframe.src = 'https://justinlts.substack.com/embed';
-    mapIframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1608.528046909094!2d-84.0224308770352!3d42.32006010989635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883ccc01ab9c8f33%3A0x7a8fb28bf5f296ec!2sChelsea%20Farmers%20Supply!5e0!3m2!1sen!2sus!4v1769795936137!5m2!1sen!2sus";
+    const subscribeIframe = document.getElementById("subscribeStack");
+    const mapIframe = document.getElementById("map-iframe");
+
+    if(subscribeIframe) subscribeIframe.src = 'https://justinlts.substack.com/embed';
+    if(mapIframe) mapIframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1608.528046909094!2d-84.0224308770352!3d42.32006010989635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883ccc01ab9c8f33%3A0x7a8fb28bf5f296ec!2sChelsea%20Farmers%20Supply!5e0!3m2!1sen!2sus!4v1769795936137!5m2!1sen!2sus";
+    
+    if(typeof embedSubstackRSS === "funtion") {
+        embedSubstackRSS();
+    } else {
+        console.warn("embedSubstackRSS not found yet. Retrying in 500ms...");
+        setTimeout(embedSubstackRSS, 500);
+    }
 }
 
-if (window.addEventListener) {
-    window.addEventListener("load", loadDeferredIframe, false);
-} else if (window.attachEvent) {
-    window.attachEvent("onload", loadDeferredIframe);
-} else {
-    window.onload = loadDeferredIframe;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    if(window.requestIdleCallback) {
+        window.requestIdleCallback(loadDeferredIframe);
+    } else {
+        setTimeout(loadDeferredIframe, 500);
+    }
+});
