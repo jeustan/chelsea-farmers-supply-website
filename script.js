@@ -699,18 +699,22 @@ function loadDeferredIframe() {
     if(subscribeIframe) subscribeIframe.src = 'https://justinlts.substack.com/embed';
     if(mapIframe) mapIframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1608.528046909094!2d-84.0224308770352!3d42.32006010989635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883ccc01ab9c8f33%3A0x7a8fb28bf5f296ec!2sChelsea%20Farmers%20Supply!5e0!3m2!1sen!2sus!4v1769795936137!5m2!1sen!2sus";
     
-    if(typeof embedSubstackRSS === "funtion") {
+    if(typeof embedSubstackRSS === "function") {
         embedSubstackRSS();
     } else {
-        console.warn("embedSubstackRSS not found yet. Retrying in 500ms...");
-        setTimeout(embedSubstackRSS, 500);
+        setTimeout(() => {
+            if(typeof embedSubstackRSS === "function") embedSubstackRSS();
+        }, 1000);
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    if(window.requestIdleCallback) {
-        window.requestIdleCallback(loadDeferredIframe);
-    } else {
-        setTimeout(loadDeferredIframe, 500);
-    }
+    //Wait 2 sec
+    setTimeout(() => {
+        if(window.requestIdleCallback) {
+            window.requestIdleCallback(loadDeferredIframe);
+        } else {
+            loadDeferredIframe();
+        }
+    }, 2000);
 });
