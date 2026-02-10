@@ -39,8 +39,44 @@
         </div>
     </header>
 
+    <!-- Color Picker Toggle -->
+    <div class="color-picker-toggle" id="colorPickerToggle" title="Customize background color">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13.5" cy="6.5" r=".5"/>
+            <circle cx="17.5" cy="10.5" r=".5"/>
+            <circle cx="8.5" cy="7.5" r=".5"/>
+            <circle cx="6.5" cy="12.5" r=".5"/>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+        </svg>
+    </div>
+    <div class="color-picker-panel" id="colorPickerPanel">
+        <h3>Customize Background Color</h3>
+        <div class="color-input-group">
+            <label for="hexColorInput">Hex Code:</label>
+            <div class="hex-input-wrapper">
+                <span class="hash-symbol">#</span>
+                <input type="text" id="hexColorInput" maxlength="6" placeholder="e8f1ce" pattern="[0-9A-Fa-f]{6}">
+                <div class="color-preview" id="colorPreview" title="Click to select color"></div>
+            </div>
+            <div class="custom-color-picker" id="customColorPicker" style="display: none;">
+                <div class="color-spectrum" id="colorSpectrum">
+                    <canvas id="spectrumCanvas" width="200" height="150"></canvas>
+                    <div class="spectrum-cursor" id="spectrumCursor"></div>
+                </div>
+                <div class="hue-slider-container">
+                    <input type="range" id="hueSlider" min="0" max="360" value="0" class="hue-slider">
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="applyColorBtn" class="apply-btn">Apply</button>
+                <button id="resetColorBtn" class="reset-btn">Reset</button>
+            </div>
+        </div>
+    </div>
+
     <main> 
         <section id="home" class="hero">
+            <img src="./images/block.png" alt="Chelsea Farmers Supply" class="hero-image">
             <div class="hero-content">
                 <h1>Dependable Supplies for Every Season</h1>
             </div>
@@ -79,23 +115,26 @@
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section id="gallery" class="section">
             <div class="container">
-                <div class="gallery-grid">
-                    <div class="gallery-item" tabindex="0"><img src="./images/store-photos/IMG_7922.jpg" alt="Gallery Image 3"></img></div>
-                    <div class="gallery-item" tabindex="0"><img src="./images/store-photos/IMG_7920.jpg" alt="Gallery Image 3"></img></div>
-                    <div class="gallery-item" tabindex="0"><img src="./images/store-photos/IMG_7914.jpg" alt="Gallery Image 1"></img></div>
-                    <div class="gallery-item" tabindex="0"><img src="./images/store-photos/IMG_7915.jpg" alt="Gallery Image 2"></img></div>
-                    <div class="gallery-item" tabindex="0"><img src="./images/store-photos/IMG_7919.jpg" alt="Gallery Image 3"></img></div>
+                <div class="carousel-container">
+                    <button class="carousel-btn carousel-prev" aria-label="Previous slide">&lt;</button>
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            <div class="carousel-slide"><img src="./images/store-photos/IMG_7922.jpg" alt="Store Photo 1"></div>
+                            <div class="carousel-slide"><img src="./images/store-photos/IMG_7920.jpg" alt="Store Photo 2"></div>
+                            <div class="carousel-slide"><img src="./images/store-photos/IMG_7914.jpg" alt="Store Photo 3"></div>
+                            <div class="carousel-slide"><img src="./images/store-photos/IMG_7915.jpg" alt="Store Photo 4"></div>
+                            <div class="carousel-slide"><img src="./images/store-photos/IMG_7919.jpg" alt="Store Photo 5"></div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn carousel-next" aria-label="Next slide">&gt;</button>
+                    <div class="carousel-indicators"></div>
                 </div>
             </div>
         </section>
         
         <section id="products" class="section">
-    
-    
             <div class="container" id="our-products">
                 <div class="section-header">
                     <h2>Our Products</h2>
@@ -356,6 +395,7 @@
         </footer>
     </main>
     <script src="embed-substack-rss.js" defer></script>
+    <script src="color-picker.js" defer></script>
     <script src="script.js" defer></script>
 </body>
 </html>

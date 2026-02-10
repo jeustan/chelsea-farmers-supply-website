@@ -117,7 +117,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             console.log(headerOffset);
             scrollTo(offsetPosition);
         } else if (target && !isSign) {
-            const headerOffset = 80;
+            const headerOffset = 140;
             const elementPosition = target.getBoundingClientRect().top;
             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             scrollTo(offsetPosition);
@@ -142,13 +142,6 @@ if (contactForm) {
         this.reset();
     });
 }
-
-// Gallery item click handling
-document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', function() {
-        // alert('Gallery image: ' + this.textContent);
-    });
-});
 
 // Header scroll effect
 window.addEventListener('scroll', () => {
@@ -181,7 +174,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.service-card, .gallery-item, .about-content, .contact-content');
+    const animatedElements = document.querySelectorAll('.service-card, .about-content, .contact-content, .carousel-container');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -464,24 +457,117 @@ function showNewsletterError(message) {
     form.insertBefore(errorDiv, form.firstChild);
 }
 
-// Enhanced gallery functionality
+// Carousel functionality
 document.addEventListener('DOMContentLoaded', () => {
-    const galleryItems = document.querySelectorAll('.gallery-item');
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    const indicatorsContainer = document.querySelector('.carousel-indicators');
     
-    galleryItems.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            openGalleryModal(index);
-        });
-        
-        // Add keyboard navigation
-        item.setAttribute('tabindex', '0');
-        item.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openGalleryModal(index);
-            }
-        });
+    if (!track || slides.length === 0) return;
+    
+    let currentIndex = 0;
+    let autoplayInterval;
+    
+    // Create indicators
+    slides.forEach((_, index) => {
+        const indicator = document.createElement('button');
+        indicator.className = 'carousel-indicator';
+        indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+        if (index === 0) indicator.classList.add('active');
+        indicator.addEventListener('click', () => goToSlide(index));
+        indicatorsContainer.appendChild(indicator);
     });
+    
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    
+    function updateCarousel() {
+        const offset = -currentIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+        resetAutoplay();
+    }
+    
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    }
+    
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+    
+    function startAutoplay() {
+        autoplayInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function resetAutoplay() {
+        clearInterval(autoplayInterval);
+        startAutoplay();
+    }
+    
+    // Event listeners
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoplay();
+    });
+    
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoplay();
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+            resetAutoplay();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            resetAutoplay();
+        }
+    });
+    
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+    
+    function handleSwipe() {
+        if (touchStartX - touchEndX > 50) {
+            nextSlide();
+            resetAutoplay();
+        } else if (touchEndX - touchStartX > 50) {
+            prevSlide();
+            resetAutoplay();
+        }
+    }
+    
+    // Start autoplay
+    startAutoplay();
+    
+    // Pause on hover
+    track.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+    track.addEventListener('mouseleave', startAutoplay);
 });
 
 function closeAccordionItems() {
@@ -528,131 +614,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
-function openGalleryModal(index) {
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const clickedItem = galleryItems[index];
-    const img = clickedItem.querySelector('img');
-    
-    // If no image found, fall back to text display
-    if (!img) {
-        const fallbackText = clickedItem.textContent || `Gallery Item ${index + 1}`;
-        alert(`Gallery: ${fallbackText}`);
-        return;
-    }
-
-    // Create modal
-    const modal = document.createElement('div');
-    modal.className = 'gallery-modal';
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 2000;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        padding: 2rem;
-        box-sizing: border-box;
-    `;
-
-    const modalContent = document.createElement('div');
-    modalContent.style.cssText = `
-        background: white;
-        border-radius: 10px;
-        max-width: 90vw;
-        max-height: 90vh;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-    `;
-
-    const closeBtn = document.createElement('button');
-    closeBtn.innerHTML = '&times;';
-    closeBtn.style.cssText = `
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        background: none;
-        border: none;
-        font-size: 2rem;
-        cursor: pointer;
-        color: #666;
-        z-index: 10;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    `;
-
-    const modalImg = document.createElement('img');
-    modalImg.src = img.src;
-    modalImg.alt = img.alt;
-    modalImg.style.cssText = `
-        max-width: 100%;
-        max-height: 70vh;
-        object-fit: contain;
-        border-radius: 10px 10px 0 0;
-    `;
-
-    const caption = document.createElement('div');
-    caption.style.cssText = `
-        padding: 1.5rem;
-        background: white;
-        border-radius: 0 0 10px 10px;
-    `;
-
-    const captionText = document.createElement('p');
-    captionText.style.cssText = `
-        color: var(--secondary-color);
-        font-size: 1.1rem;
-        margin: 0;
-        font-family: var(--body-font);
-    `;
-    captionText.textContent = img.alt || 'Project Image';
-
-    // caption.appendChild(captionText);
-    modalContent.appendChild(closeBtn);
-    modalContent.appendChild(modalImg);
-    // modalContent.appendChild(caption);
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-
-    // Show modal
-    setTimeout(() => modal.style.opacity = '1', 10);
-
-    // Close modal functionality
-    const closeModal = () => {
-        modal.style.opacity = '0';
-        setTimeout(() => {
-            if (modal.parentNode) {
-                modal.remove();
-            }
-        }, 300);
-    };
-
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', function escapeHandler(e) {
-        if (e.key === 'Escape') {
-            closeModal();
-            document.removeEventListener('keydown', escapeHandler);
-        }
-    });
-}
 
 // Utility function to ensure script compatibility
 function ensureScriptCompatibility() {
