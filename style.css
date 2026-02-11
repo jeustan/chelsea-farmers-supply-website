@@ -1318,7 +1318,7 @@ footer {
 
 @media (max-width: 480px) {
     .header-content {
-        padding: 2em 2em;
+        padding: 0 2em;
     }
 
     .hero h1 {
