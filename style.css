@@ -686,7 +686,7 @@ html {
 
 .close-accordion {
     width: 100%;
-    padding: 0.6rem;
+    padding: 1em 0;
     background: #f8f8f8; /* Light grey to distinguish from list items */
     border: none;
     border-top: 1px solid #66666650;
