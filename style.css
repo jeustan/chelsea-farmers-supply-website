@@ -1278,6 +1278,7 @@ footer {
 
     .hero-content h1 {
         font-size: 1.6rem;
+        padding-top: 1em;
     }
 
     .map-iframe-container {
@@ -1309,6 +1310,7 @@ footer {
 @media (max-width: 607px) {
     .hero-content h1 {
         font-size: 1.3rem;
+        padding: 2.5em 0 0 0;
     }
 
     .map-iframe-container {
