@@ -1273,8 +1273,7 @@ footer {
 
 @media (max-width: 763px) {
     .hero {
-        padding-top: 50px;
-        padding-bottom: 20px;
+        padding: 18% 0 15% 0;
     }
 
     .hero-content h1 {
@@ -1318,6 +1317,9 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .header-content {
+        padding: 2em 2em;
+    }
 
     .hero h1 {
         font-size: 1rem;
@@ -1357,10 +1359,6 @@ footer {
     }
     
     .container {
-        padding: 0 1rem;
-    }
-    
-    .header-content {
         padding: 0 1rem;
     }
 }
