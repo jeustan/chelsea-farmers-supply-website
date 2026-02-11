@@ -647,7 +647,7 @@ html {
 .accordion-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 2em;
     margin-top: 1em;
 }
 
@@ -1216,6 +1216,7 @@ footer {
     
     .accordion-container {
         grid-template-columns: 1fr;
+        gap:1em;
     }
     
     .carousel-btn {
