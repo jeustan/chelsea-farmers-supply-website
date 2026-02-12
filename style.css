@@ -28,9 +28,8 @@
 
     --marquee-width: 80vw;
     --marquee-height: 20vh;
-    /* --marquee-elements: 12; */ /* defined with JavaScript */
-    --marquee-elements-displayed: 5;
-    --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+    --marquee-items: 11;
+    --marquee-element-width: calc(var(--marquee-width) / var(--marquee-items));
     --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
 }
 
@@ -619,7 +618,6 @@ html {
   --marquee-item-width: 260px;
   --marquee-item-height: 100px;
   --marquee-duration: 45s;
-  --marquee-items: 10;
 }
 
 .marquee__container {
