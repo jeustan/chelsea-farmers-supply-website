@@ -147,11 +147,11 @@ if (contactForm) {
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
     if (window.scrollY > 100) {
-        header.style.background = `linear-gradient(135deg, ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color')} 0%, ${getComputedStyle(document.documentElement).getPropertyValue('--secondary-header-color')} 100%)`;
+        header.style.backgroundColor = `${getComputedStyle(document.documentElement).getPropertyValue('--header-color')} 0%`;
         header.style.backdropFilter = 'blur(10px)';
         header.style.opacity = '0.95';
     } else {
-        header.style.background = `linear-gradient(135deg, ${getComputedStyle(document.documentElement).getPropertyValue('--primary-color')} 0%, ${getComputedStyle(document.documentElement).getPropertyValue('--secondary-header-color')} 100%)`;
+        header.style.backgroundColor = `${getComputedStyle(document.documentElement).getPropertyValue('--header-color')} 100%)`;
         header.style.backdropFilter = 'none';
         header.style.opacity = '1';
     }
