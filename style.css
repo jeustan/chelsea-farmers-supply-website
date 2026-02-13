@@ -370,7 +370,7 @@ html {
 
 /* Marquee */
 .marquee {
-  background-color: #fff;
+  background-color: var(--cream-thing);
   display: flex;
   block-size: var(--marquee-item-height);
   /* margin-block: var(--marquee-item-height); */
