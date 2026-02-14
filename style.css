@@ -382,6 +382,7 @@ html {
   block-size: var(--marquee-item-height);
   /* margin-block: var(--marquee-item-height); */
   width:100%;
+  height:100%;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -395,8 +396,8 @@ html {
   );
 
   --marquee-item-width: 260px;
-  --marquee-item-height: 100px;
-  --marquee-duration: 45s;
+  --marquee-item-height: 120px;
+  --marquee-duration: 52s;
 }
 
 .marquee__container {
@@ -482,7 +483,7 @@ html {
 
 .close-accordion {
     width: 100%;
-    padding: 1em 0;
+    padding: 1.4em 0;
     background: var(--header-color);
     border: none;
     border-top: 1px solid #66666650;
@@ -590,40 +591,6 @@ section .accordion-links li:nth-child(even) a {
 #map-iframe {
     width:100%;
     height: 100%;
-}
-
-.contact-form {
-    background: white;
-    /* padding: 2rem; */
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--secondary-color);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid var(--border-color);
-    border-radius: 5px;
-    font-family: var(--body-font);
-    transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
 }
 
 .contact-info h3 {
