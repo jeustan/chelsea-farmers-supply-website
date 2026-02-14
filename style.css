@@ -538,27 +538,27 @@ html {
     transition: color 0.3s ease;
 }
 
-section .accordion-links li:nth-child(even) a {
+section .accordion-links li:nth-child(odd) a {
     color: white;
 }
 
-section .accordion-links li:nth-child(odd) a {
+section .accordion-links li:nth-child(even) a {
     /* background-color: var(--dependable-green); */
     color:black; 
 }
 
-.accordion-content li:nth-child(even) {
+.accordion-content li:nth-child(odd) {
     background-color: var(--dependable-green);
     color:white;
 }
 
 .accordion-links li:nth-child(odd):hover {
-    background-color: rgb(225, 241, 78, .15);
+    background-color: #095914cb;
     text-decoration: underline;
 }
 
 .accordion-links li:nth-child(even):hover {
-    background-color: #095914cb;
+    background-color: rgb(225, 241, 78, .15);
     text-decoration: underline;
 }
 
@@ -571,6 +571,7 @@ section .accordion-links li:nth-child(odd) a {
 .accordion-item.active .accordion-header {
     background-color: var(--cream-thing);
     color:black;
+    border: solid .1em rgb(219, 219, 219);
 }
 
 /* Contact Section */
@@ -790,7 +791,7 @@ section .accordion-links li:nth-child(odd) a {
 
 /* Footer */
 footer {
-    background: var(--secondary-header-color);
+    background: var(--header-color);
     color: var(--text-light);
     padding: 3rem 0 1rem;
     text-align: center;
@@ -808,14 +809,15 @@ footer {
     font-family: var(--heading-font);
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--secondary-color);
+    color: var(--cream-thing);
 }
 
 .footer-section p,
 .footer-section a {
-    color: #1b1b1b;
+    color: var(--cream-thing);
     text-decoration: none;
     line-height: 1.8;
+    font-size: 1.2rem;
 }
 
 .footer-section a:hover {
@@ -824,9 +826,9 @@ footer {
 }
 
 .footer-bottom {
-    border-top: 1px solid #34495e;
+    border-top: 1px solid var(--cream-thing);
     padding-top: 1rem;
-    color: #1a1a1a;
+    color: var(--cream-thing);
 }
 
 .footer-products {
