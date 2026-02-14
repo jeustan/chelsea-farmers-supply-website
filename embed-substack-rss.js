@@ -86,16 +86,9 @@ function embedSubstackRSS () {
       body.appendChild(pDate);
     }
 
-    const pDesc = document.createElement('p');
-    pDesc.className = 'substack-desc';
-    // Use description (plaintext-ish from rss2json) and truncate
-    pDesc.textContent = truncate(post.description, 160);
-    body.appendChild(pDesc);
-
     const pContent = document.createElement('div');
     pContent.className = 'substack-content';
     pContent.innerHTML = truncateContent(post.content);
-
     body.appendChild(pContent);
    
     wrap.appendChild(body);
