@@ -947,6 +947,9 @@ footer {
     .sign-text p {
         font-size: 1rem;
     } 
+    .sign-text {
+        margin-left: 20%;
+    }
 }
 
 @media (max-width: 607px) {
@@ -954,6 +957,7 @@ footer {
         font-size: 1rem;
         padding: 1em 0 0 0;
     }
+
 
     .map-iframe-container {
         width:100%;
