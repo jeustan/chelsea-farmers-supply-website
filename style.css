@@ -812,8 +812,16 @@ footer {
         justify-content: center;
     }
 
+    .substack-iframe-container {
+        border: none;
+    }
+
     .map-iframe-container {
         width: 75%;
+    }
+
+    .map-iframe-container{
+        justify-content: center;
     }
 
     .contact-info, .map-iframe-container {
@@ -824,9 +832,6 @@ footer {
         justify-content: center;
     }
 
-    .map-iframe-container{
-        justify-content: center;
-    }
 
     .sign-text {
         width: 340px;
