@@ -736,6 +736,7 @@ footer {
 
 .sign-text p {
     margin-bottom: 18px;
+    border-radius: 2px;
     padding:8px;
     display: block;
     width: fit-content;
