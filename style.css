@@ -721,6 +721,12 @@ footer {
     color: var(--cream-thing);
 }
 
+.footer-bottom a {
+    color: var(--cream-thing);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
 .footer-products {
     display: flex;
     flex-direction: column;
