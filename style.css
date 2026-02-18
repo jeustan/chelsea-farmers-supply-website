@@ -150,7 +150,7 @@ nav a:hover {
 .hero {
     margin: 0;
     width: 100%;
-    height: calc(100vh - 140px);
+    height: 100vh;
     position: relative;
     display: flex;
     color: black;
@@ -158,8 +158,8 @@ nav a:hover {
 }
 
 .hero-image {
-    width: 1120px;
-    height: 686px;
+    width: auto;
+    height: calc(100% - 140px);
     margin: auto;
 }
 
@@ -756,13 +756,6 @@ footer {
 
 .rotate-sign {
     transform: rotate(-1deg);
-}
-
-@media (max-width: 1400px) {
-    .hero-image {
-        width: 1120px;
-        height: 686px;
-    }
 }
 
 @media (max-width: 1300px) {
