@@ -1,67 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chelsea Farmers Supply in Chelsea, MI offers feed, seed, soil, garden supplies, wild bird supplies, and pet food from trusted brands.">
-    <meta name="robots" content="index, follow, max-image-preview:large">
-    <link rel="canonical" href="https://chelseafarmersupply.com/">
-    <meta name="author" content="Chelsea Farmers Supply">
     <meta property="og:title" content="Chelsea Farmers Supply">
-    <meta property="og:description" content="Feed, seed, soil, garden supplies, and pet food in Chelsea, Michigan.">
     <meta property="og:image" content="https://chelseafarmersupply.com/images/block.png">
-    <meta property="og:url" content="https://chelseafarmersupply.com/">
+    <meta property="og:url" content="https://yourdomain.com/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Chelsea Farmers Supply">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Chelsea Farmers Supply">
-    <meta name="twitter:description" content="Feed, seed, soil, garden supplies, and pet food in Chelsea, Michigan.">
-    <meta name="twitter:image" content="https://chelseafarmersupply.com/images/block.png">
-    <title id="page-title">Chelsea Farmers Supply | Feed, Seed, Garden, and Pet Supplies in Chelsea, MI</title>
+    <title id="page-title">Chelsea Farmers Supply</title>
     <link rel="icon" type="image/svg+xml" href="fav.svg">  
     <link href="fonts.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href="substack.css" rel="stylesheet">
     <link rel="preconnect" href="https://api.rss2json.com">
-    <link rel="preconnect" href="https://chelseafarmerssupply.substack.com">
+    <link rel="preconnect" href="https://chelseafarerssupply.substack.com">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-        <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Store",
-            "name": "Chelsea Farmers Supply",
-            "url": "https://chelseafarmersupply.com/",
-            "image": "https://chelseafarmersupply.com/images/block.png",
-            "telephone": "+1-734-475-1777",
-            "email": "chelseafarmersupply@gmail.com",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "122 Jackson St",
-                "addressLocality": "Chelsea",
-                "addressRegion": "MI",
-                "postalCode": "48118",
-                "addressCountry": "US"
-            },
-            "openingHoursSpecification": [
-                {
-                    "@type": "OpeningHoursSpecification",
-                    "dayOfWeek": [
-                        "Tuesday",
-                        "Wednesday",
-                        "Thursday",
-                        "Friday",
-                        "Saturday",
-                        "Sunday"
-                    ],
-                    "opens": "10:00",
-                    "closes": "18:00"
-                }
-            ],
-            "sameAs": [
-                "https://www.facebook.com/ChelseaFarmersSupply",
-                "https://www.instagram.com/chelsea_farmers_supply/"
-            ]
-        }
-        </script>
 </head>
 
 <body style="opacity: 1; transition: opacity 0.3s;">
@@ -189,14 +141,14 @@
                             <button id="feed" class="accordion-header">FEED</button>
                             <div class="accordion-content accordion-links">
                                 <ul>
-                                    <li><a href="https://www.scratchandpeck.com/" target="_blank">Scratch and Peck</a></li>
-                                    <li><a href="https://www.kalmbachfeeds.com/" target="_blank">Kalmbach</a></li>
-                                    <li><a href="https://tributeequinenutrition.com/" target="_blank">Tribute Equine</a></li>
-                                    <li><a href="https://www.newcountryorganics.com/" target="_blank">New Country Organics</a></li>
-                                    <li><a href="https://standishmilling.com/" target="_blank">Ideal by Standish Milling</a></li>
-                                    <li><a href="https://unbeetablefeeds.com/" target="_blank">Unbeetable Feeds</a></li>
-                                    <li><a href="https://summitforages.com/" target="_blank">Summit Forage Products</a></li>
-                                    <li><a href="https://heinoldfeeds.myshopify.com/" target="_blank">Heinold Rabbit</a></li>
+                                    <li><a href="https://www.scratchandpeck.com/" target=_blank>Scratch and Peck</a></ln>
+                                    <li><a href="https://www.kalmbachfeeds.com/" target=_blank>Kalmbach</a></ln>
+                                    <li><a href="https://tributeequinenutrition.com/" target=_blank>Tribute Equine</a></ln>
+                                    <li><a href="https://www.newcountryorganics.com/" target=_blank>New Country Organics</a></ln>
+                                    <li><a href="https://standishmilling.com/" target=_blank>Ideal by Standish Milling</a></ln>
+                                    <li><a href="https://unbeetablefeeds.com/" target=_blank>Unbeetable Feeds</a></ln>
+                                    <li><a href="https://summitforages.com/" target=_blank>Summit Forage Products</a></ln>
+                                    <li><a href="https://heinoldfeeds.myshopify.com/">Heinold Rabbit</a></li>
                                 </ul>
                                 <button class="close-accordion">x</button>
                             </div>
@@ -322,7 +274,7 @@
                 </div>
 
                 <div class="newsletter-section-content">
-                    <div class="substack-feed-embed" data-substack-url="chelseafarmerssupply.substack.com" data-posts="1" data-show-images="false"></div>
+                    <div id="rss-feed" class="substack-feed-embed" data-substack-url="chelseafarmerssupply.substack.com" data-posts="1" data-show-images="false"></div>
                     
                     <div class="substack-iframe-container">
                         <iframe id="subscribeStack" loading="lazy" frameborder="0" scrolling="no"></iframe>
@@ -402,7 +354,7 @@
             </div>
         </footer>
     </main>
-    <script src="embed-substack-rss.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="embed-substack-rss.js" defer></script>
 </body>
 </html>
