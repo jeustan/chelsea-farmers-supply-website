@@ -585,11 +585,16 @@ section .accordion-links li:nth-child(even) a {
     grid-template-columns: 3fr 1fr;
     gap: 3rem;
     justify-content: center;
+    align-items: start;
 }
 
 .substack-feed-embed, .substack-subscribe {
     border: 1px dashed #24242460;
     padding: 14px;
+}
+
+.substack-subscribe {
+    size:fit-content;
 }
 
 .substack-feed-embed{
@@ -603,8 +608,9 @@ section .accordion-links li:nth-child(even) a {
     align-items: center;
     justify-content: start;
     gap: 16px;
-    height:400px;
     min-width: 320px;
+    border: 1px solid #eee;
+    padding:12px;
 }
 
 .subscribe-body button {
@@ -773,14 +779,13 @@ footer {
 
     .newsletter-section-content {
         grid-template-columns: 1fr;
+        justify-items: center;
+        
     }
 
-    .substack-iframe-container {
-        width: 400px;
-        height: 400px;
-        margin: 0 auto;
+    .substack-subscribe {
+        width:400px;    
     }
-
 }
 
 @media (max-width: 870px) {
