@@ -586,22 +586,9 @@ section .accordion-links li:nth-child(even) a {
     justify-content: center;
 }
 
-#subscribeStack {
-    width:100%;
-    height: 100%;
-    border:1px solid #EEE;
-    background:white;
-    margin: 0 auto;
-}
-
-.substack-feed-embed, .substack-iframe-container {
+.substack-feed-embed, .substack-subscribe {
     border: 1px dashed #24242460;
     padding: 14px;
-}
-
-.substack-iframe-container {
-    height:400px;
-    min-width: 320px;
 }
 
 .substack-feed-embed{
@@ -609,44 +596,34 @@ section .accordion-links li:nth-child(even) a {
     justify-content: center;
 }
 
-.newsletter-form {
-    max-width: 500px;
-    margin: 0 auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-}
-
-.newsletter-form form {
+.subscribe-body {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    justify-content: start;
+    gap: 16px;
+    height:400px;
+    min-width: 320px;
 }
 
-.newsletter-form .form-group {
-    margin-bottom: 0;
-}
-
-.newsletter-form .btn {
-    align-self: flex-start;
-    padding: 0.75rem 2rem;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-family: var(--body-font);
-    font-weight: 600;
+.subscribe-body button {
+    /* height: 40px; */
+    padding: 1rem .5rem;
+    border-radius: 8px;
+    background-color: var(--header-color);
     cursor: pointer;
-    transition: background 0.3s ease;
 }
 
-.newsletter-form .btn:hover {
-    background: var(--primary-light);
+.subscribe-body h3 {
+    color: #757575;
 }
 
-.newsletter-form { 
-    margin-bottom: 40px; 
+.subscribe-body button a {
+    text-decoration: none;
+    color: var(--cream-thing);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--body-font);
 }
 
 .substack-post { 
