@@ -25,7 +25,7 @@
     --body-font: 'Open Sans', sans-serif;
     --font-body: 'Open Sans', sans-serif;
     --dependable-green: #095913;
-    
+    --sage-text: rgb(63, 58, 37);
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
 
@@ -195,12 +195,11 @@ nav a:hover {
 }
 
 
-
 /* Sections */
 .section {
-    padding: 1em 0;
+    padding: 2rem 1rem;
     background-color: var(--cream-thing);
-    /* scroll-margin-top: 6em; */
+
 }
 
 html {
@@ -215,13 +214,13 @@ html {
 
 .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .section-header h2 {
     font-family: var(--heading-font);
     font-size: 2.5rem;
-    color: var(--secondary-color);
+    color: var(--sage-text);
     margin-bottom: 1rem;
 }
 
@@ -288,13 +287,14 @@ html {
 .about-text h3 {
     font-family: var(--heading-font);
     font-size: 2rem;
-    color: var(--secondary-color);
+    color: var(--sage-text);
     margin-bottom: 1rem;
 }
 
 .about-text p {
     margin-bottom: 1.5rem;
-    color: #1d1d1d;
+    color: var(--sage-text);
+    font-size: 19px;
 }
 
 .about-image {
@@ -376,7 +376,7 @@ html {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2em;
-    margin-top: 3em;
+    margin-top: 2em;
 }
 .accordion-container {
     display: grid;
