@@ -547,7 +547,6 @@ section .accordion-links li:nth-child(even) a {
 .contact-icon {
     width: 50px;
     height: 50px;
-    background: var(--primary-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -614,8 +613,20 @@ section .accordion-links li:nth-child(even) a {
 }
 
 .substack-feed-embed{
+    font-family: "Spectral", Georgia, "Times New Roman", serif;;
     display: flex;
     justify-content: center;
+}
+
+.substack-feed-embed h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.substack-feed-embed p {
+    margin: 0 0 20px 0;
+    font-size: 19px;
 }
 
 .subscribe-body {
