@@ -653,27 +653,56 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-async function loadDeferredIframe() {
-    const sub = document.getElementById("subscribeStack");
-    const map = document.getElementById("map-iframe");
-
-    const yieldToMain = () => new Promise(resolve => setTimeout(resolve, 0));
-
-    if(map) map.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1608.528046909094!2d-84.0224308770352!3d42.32006010989635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883ccc01ab9c8f33%3A0x7a8fb28bf5f296ec!2sChelsea%20Farmers%20Supply!5e0!3m2!1sen!2sus!4v1769795936137!5m2!1sen!2sus";
-    await yieldToMain();
-    
+function initSubstackRSS() {
     function tryRSS() {
-        if(typeof embedSubstackRSS === "function") {
+        if (typeof embedSubstackRSS === "function") {
             embedSubstackRSS();
         } else {
             setTimeout(tryRSS, 200);
         }
     }
+
     tryRSS();
 }
 
+function loadDeferredIframe() {
+    const map = document.getElementById("map-iframe");
+    if (!map || map.getAttribute("src")) return;
+
+    const fallbackMapSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1608.528046909094!2d-84.0224308770352!3d42.32006010989635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883ccc01ab9c8f33%3A0x7a8fb28bf5f296ec!2sChelsea%20Farmers%20Supply!5e0!3m2!1sen!2sus!4v1769795936137!5m2!1sen!2sus";
+    const dataSrc = map.getAttribute("data-src");
+    const src = dataSrc && !dataSrc.includes("...") ? dataSrc : fallbackMapSrc;
+
+    map.setAttribute("src", src);
+}
+
+function observeDeferredMapLoad() {
+    const map = document.getElementById("map-iframe");
+    if (!map) return;
+
+    if (!("IntersectionObserver" in window)) {
+        loadDeferredIframe();
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries, obs) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                loadDeferredIframe();
+                obs.unobserve(map);
+            }
+        },
+        {
+            root: null,
+            rootMargin: "200px 0px",
+            threshold: 0
+        }
+    );
+
+    observer.observe(map);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-        loadDeferredIframe(); 
-    }, 50);
+    initSubstackRSS();
+    observeDeferredMapLoad();
 });
