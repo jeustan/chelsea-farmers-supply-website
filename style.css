@@ -645,9 +645,10 @@ section .accordion-links li:nth-child(even) a {
     border: 1px solid #701c07d8;
     height:60px;
     width:275px;
-    border-radius: 8px;
+    border-radius: 3px;
     background-color: var(--header-color);
     cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .subscribe-body button:hover {
