@@ -562,7 +562,7 @@ section .accordion-links li:nth-child(even) a {
 }
 
 .social-link {
-    border: 1px solid black;
+    border: 2px solid var(--header-color);
     width: 50px;
     height: 50px;
     background: white;
@@ -575,8 +575,21 @@ section .accordion-links li:nth-child(even) a {
     transition: background 0.3s ease;
 }
 
+.social-links svg {
+    width: 30px;
+    height: 30px;
+}
+
+.social-link svg path {
+    fill: var(--header-color);
+}
+
+.social-link:hover svg path {
+    fill: #9e2608d0;
+}
+
 .social-link:hover {
-    background: var(--primary-color);
+    border-color: #9e2608d0;
 }
 
 /* Newsletter Section */
@@ -615,11 +628,15 @@ section .accordion-links li:nth-child(even) a {
 }
 
 .subscribe-body button {
-    /* height: 40px; */
+    border: 1px solid #701c07d8;
     padding: 1rem .5rem;
     border-radius: 8px;
     background-color: var(--header-color);
     cursor: pointer;
+}
+
+.subscribe-body button:hover {
+    background-color: #9e2608e7;
 }
 
 .subscribe-body h3 {
@@ -825,8 +842,6 @@ footer {
         justify-content: center;
     }
 
-
-
     .map-iframe-container {
         width: 75%;
     }
@@ -841,10 +856,6 @@ footer {
 
     .social-links {
         justify-content: center;
-    }
-
-    .social-links img {
-        fill: var(--header-color)
     }
 
     .sign-text {
