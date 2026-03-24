@@ -413,7 +413,7 @@ html {
     width: 100%;
     padding: 1.5rem;
     background: var(--header-color);
-    border: none;
+    border: 0.1em solid transparent;
     text-align: left;
     font-family: var(--accordion-header-font);
     font-size: 1.35rem;
@@ -521,7 +521,7 @@ section .accordion-links li:nth-child(even) a {
 .accordion-item.active .accordion-header {
     background-color: var(--cream-thing);
     color:black;
-    border: solid .1em rgb(219, 219, 219);
+    border-color: rgb(219, 219, 219);
 }
 
 /* Contact Section */
