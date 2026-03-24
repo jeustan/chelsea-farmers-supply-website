@@ -596,9 +596,23 @@ section .accordion-links li:nth-child(even) a {
     align-items: start;
 }
 
-.substack-feed-embed, .substack-subscribe {
+#subscribeStack {
+    width: 100%;
+    min-height: 320px;
+    height: 360px;
+    border:1px solid #EEE;
+    background: white;
+    margin: 0 auto;
+}
+
+.substack-feed-embed, .substack-iframe-container {
     border: 1px dashed #24242460;
     padding: 14px;
+}
+
+.substack-iframe-container {
+    height: 400px;
+    min-width: 320px;
 }
 
 .substack-subscribe {

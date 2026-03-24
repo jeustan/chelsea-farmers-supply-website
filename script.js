@@ -708,8 +708,11 @@ function observeDeferredMapLoad() {
 async function initSubstackSubscribe() {
     const sub = document.getElementById("subscribeStack");
     const yieldToMain = () => new Promise(resolve => setTimeout(resolve, 0));
-    
-    if(sub) sub.src = 'https://chelseafarmerssupply.substack.com/embed';
+
+    if (sub) {
+        sub.src = 'https://chelseafarmerssupply.substack.com/embed';
+    }
+
     await yieldToMain();
 }
 
