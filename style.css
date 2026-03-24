@@ -25,7 +25,7 @@
     --body-font: 'Open Sans', sans-serif;
     --font-body: 'Open Sans', sans-serif;
     --dependable-green: #095913;
-    
+    --sage-text: rgb(63, 58, 37);
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
 
@@ -49,7 +49,7 @@ body, html {
 body {
     font-family: var(--body-font);
     line-height: 1.6;
-    color: var(--text-dark);
+    color: var(--sage-text);
     scroll-behavior: smooth;
 }
 
@@ -195,12 +195,11 @@ nav a:hover {
 }
 
 
-
 /* Sections */
 .section {
-    padding: 1em 0;
+    padding: 2rem 1rem;
     background-color: var(--cream-thing);
-    /* scroll-margin-top: 6em; */
+
 }
 
 html {
@@ -215,13 +214,13 @@ html {
 
 .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .section-header h2 {
     font-family: var(--heading-font);
     font-size: 2.5rem;
-    color: var(--secondary-color);
+    color: var(--sage-text);
     margin-bottom: 1rem;
 }
 
@@ -296,19 +295,21 @@ html {
     justify-items: center;
 }
 
-.about-text h3 {
+.about-text h3, .contact-info h3 {
     font-family: var(--heading-font);
     font-size: 2rem;
-    color: var(--secondary-color);
+    color: var(--sage-text);
     margin-bottom: 1rem;
 }
 
 .about-text p {
     margin-bottom: 1.5rem;
-    color: #1d1d1d;
+    color: var(--sage-text);
+    font-size: 19px;
 }
 
 .about-image {
+    width:100%;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -386,7 +387,7 @@ html {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2em;
-    margin-top: 3em;
+    margin-top: 2em;
 }
 .accordion-container {
     display: grid;
@@ -541,13 +542,6 @@ section .accordion-links li:nth-child(even) a {
     height: 100%;
 }
 
-.contact-info h3 {
-    font-family: var(--heading-font);
-    font-size: 1.8rem;
-    color: var(--secondary-color);
-    margin-bottom: 1.5rem;
-}
-
 .contact-item {
     display: flex;
     align-items: center;
@@ -557,7 +551,6 @@ section .accordion-links li:nth-child(even) a {
 .contact-icon {
     width: 50px;
     height: 50px;
-    background: var(--primary-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -574,9 +567,10 @@ section .accordion-links li:nth-child(even) a {
 }
 
 .social-link {
+    border: 2px solid var(--header-color);
     width: 50px;
     height: 50px;
-    background: var(--secondary-header-color);
+    background: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -586,23 +580,39 @@ section .accordion-links li:nth-child(even) a {
     transition: background 0.3s ease;
 }
 
+.social-links svg {
+    width: 30px;
+    height: 30px;
+}
+
+.social-link svg path {
+    fill: var(--header-color);
+}
+
+.social-link:hover svg path {
+    fill: #9e2608d0;
+}
+
 .social-link:hover {
-    background: var(--primary-color);
+    border-color: #9e2608d0;
 }
 
 /* Newsletter Section */
+/* */
 .newsletter-section-content {
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 3rem;
     justify-content: center;
+    align-items: start;
 }
 
 #subscribeStack {
-    width:100%;
-    height: 100%;
+    width: 100%;
+    min-height: 320px;
+    height: 360px;
     border:1px solid #EEE;
-    background:white;
+    background: white;
     margin: 0 auto;
 }
 
@@ -612,59 +622,78 @@ section .accordion-links li:nth-child(even) a {
 }
 
 .substack-iframe-container {
-    height:400px;
+    height: 400px;
     min-width: 320px;
 }
 
+.substack-subscribe {
+    size:fit-content;
+}
+
 .substack-feed-embed{
+    color: rgb(92, 85, 55);
+    font-family: "Spectral", Georgia, "Times New Roman", serif;;
     display: flex;
     justify-content: center;
 }
 
-.newsletter-form {
-    max-width: 500px;
-    margin: 0 auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+.substack-feed-embed h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
 }
 
-.newsletter-form form {
+.substack-feed-embed p {
+    margin: 0 0 20px 0;
+    font-size: 19px;
+}
+
+.subscribe-body {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    justify-content: start;
+    gap: 16px;
+    min-width: 320px;
+    border: 1px solid #eee;
+    padding:12px;
 }
 
-.newsletter-form .form-group {
-    margin-bottom: 0;
-}
-
-.newsletter-form .btn {
-    align-self: flex-start;
-    padding: 0.75rem 2rem;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-family: var(--body-font);
-    font-weight: 600;
+.subscribe-body button {
+    border: 1px solid #701c07d8;
+    height:60px;
+    width:275px;
+    border-radius: 3px;
+    background-color: var(--header-color);
     cursor: pointer;
-    transition: background 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-.newsletter-form .btn:hover {
-    background: var(--primary-light);
+.subscribe-body button:hover {
+    background-color: #9e2608e7;
 }
 
-.newsletter-form { 
-    margin-bottom: 40px; 
+.subscribe-body h3 {
+    color: #757575;
+}
+
+.subscribe-body button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--cream-thing);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--body-font);
 }
 
 .substack-post { 
     width: 100%;
     min-height: 369.77px;
-    background-color: rgb(255, 255, 255);
+    background-color: #fffbeb;
     /* margin-bottom: 20px;  */
     padding: 15px; 
     border: 1px solid #eee; 
@@ -807,14 +836,13 @@ footer {
 
     .newsletter-section-content {
         grid-template-columns: 1fr;
+        justify-items: center;
+        
     }
 
-    .substack-iframe-container {
-        width: 400px;
-        height: 400px;
-        margin: 0 auto;
+    .substack-subscribe {
+        width:400px;    
     }
-
 }
 
 @media (max-width: 870px) {
@@ -853,10 +881,6 @@ footer {
         justify-content: center;
     }
 
-    .substack-iframe-container {
-        border: none;
-    }
-
     .map-iframe-container {
         width: 75%;
     }
@@ -872,7 +896,6 @@ footer {
     .social-links {
         justify-content: center;
     }
-
 
     .sign-text {
         width: 340px;
